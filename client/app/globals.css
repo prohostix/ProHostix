@@ -1,0 +1,578 @@
+@import "tailwindcss";
+
+@layer base {
+
+    /* Ensure consistent font sizing across all devices */
+    html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    body {
+        @apply m-0 text-white antialiased;
+        background: linear-gradient(135deg, #111111 0%, #000000 100%);
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.5;
+        /* Hardware acceleration for smooth scrolling in Safari */
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+
+    /* Force dark autofill styles with high specificity and !important */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-text-fill-color: white !important;
+        color: white !important;
+        /* Match the visual appearance of bg-white/5 on #0a0a0a (~#171717) */
+        -webkit-box-shadow: 0 0 0 1000px #171717 inset !important;
+        transition: background-color 5000s ease-in-out 0s;
+        caret-color: #10b981 !important;
+        /* Match emerald-500 */
+    }
+}
+
+/* Custom class for dark inputs to ensure text visibility in ALL states */
+.dark-input {
+    color: white !important;
+    color-scheme: dark;
+}
+
+/* Ensure these states don't override the color */
+.dark-input:focus,
+.dark-input:active,
+.dark-input:invalid,
+.dark-input:-moz-read-only {
+    color: white !important;
+}
+
+.dark-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- SAFARI & PERFORMANCE OPTIMIZATIONS --- */
+.force-gpu {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+.safari-blur-fix {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.static-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+}
+
+
+@keyframes logo-nudge-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    45% {
+        transform: translateX(4px);
+    }
+
+    55% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-logo-nudge {
+    animation: logo-nudge-right 0.4s ease-in-out;
+}
+
+
+@keyframes pro-move {
+    0% {
+        transform: translateX(0);
+    }
+
+    45% {
+        transform: translateX(4px);
+    }
+
+    55% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes hostix-move {
+    0% {
+        transform: translateX(0);
+    }
+
+    45% {
+        transform: translateX(-3px);
+    }
+
+    55% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes nudge-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    45% {
+        transform: translateX(6px);
+    }
+
+    55% {
+        transform: translateX(6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes nudge-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    45% {
+        transform: translateX(-6px);
+    }
+
+    55% {
+        transform: translateX(-6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-nudge-right {
+    animation: nudge-right 0.4s ease-in-out;
+}
+
+.animate-nudge-left {
+    animation: nudge-left 0.4s ease-in-out;
+}
+
+@keyframes reveal-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes title-reveal-left-to-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-150px);
+        filter: blur(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes title-reveal-right-back {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+        filter: blur(10px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(80px, 0, 0);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes title-reveal-expand {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(40px);
+        filter: blur(10px);
+        letter-spacing: -0.05em;
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+        letter-spacing: normal;
+    }
+}
+
+@keyframes brace-flip-left {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) translateX(-50px) rotateY(-180deg);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) translateX(0) rotateY(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes brace-flip-right {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) translateX(50px) rotateY(180deg);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) translateX(0) rotateY(0deg);
+        filter: blur(0);
+    }
+}
+
+
+
+.animate-brace-left {
+    animation: brace-flip-left 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-brace-right {
+    animation: brace-flip-right 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.brace-hover-flip {
+    display: inline-block;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    cursor: pointer;
+}
+
+.brace-hover-flip:hover {
+    transform: perspective(1000px) rotateY(180deg) !important;
+}
+
+.animate-title-1 {
+    animation: title-reveal-left-to-right 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.animate-title-2 {
+    animation: title-reveal-right-back 1.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.animate-title-3 {
+    animation: title-reveal-expand 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.animate-reveal-up {
+    animation: reveal-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.animate-reveal-right {
+    animation: reveal-right 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+
+
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.animate-cursor {
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) skewX(-15deg);
+    }
+
+    100% {
+        transform: translateX(200%) skewX(-15deg);
+    }
+}
+
+.animate-shine {
+    animation: shine 1.5s ease-in-out infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.animate-flicker {
+    animation: flicker 0.1s infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 40s linear infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes title-translate-in {
+    0% {
+        opacity: 0;
+        transform: translateX(150px);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+.animate-title-2-translate {
+    animation: title-translate-in 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-pro-move {
+    animation: pro-move 0.4s ease-in-out;
+}
+
+
+.animate-hostix-move {
+    animation: hostix-move 0.4s ease-in-out;
+}
+
+@keyframes neon-flow {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(250%);
+    }
+}
+
+@keyframes progress-fill {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
+.animate-neon-flow {
+    animation: neon-flow 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-neon-flow-delayed {
+    animation: neon-flow 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 1.25s;
+}
+
+.animate-progress-fill {
+    animation: progress-fill 9s linear infinite;
+}
+
+.transformed-module-nudge {
+    animation: module-nudge 10s ease-in-out infinite;
+}
+
+@keyframes module-nudge {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(0.88);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(0.88);
+    }
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes progress-loading {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.5;
+    }
+
+    70% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+}
+
+.animate-scan {
+    animation: scan 4s linear infinite;
+}
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+.animate-draw {
+    animation: draw 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
