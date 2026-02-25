@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeClient from './HomeClient';
 import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 
 import { getSeoMetadata } from '@/lib/seo';
 
