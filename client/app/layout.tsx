@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 export const metadata: Metadata = {
   title: "ProHostix",
   description: "Architecting high-performance digital ecosystems",
+  keywords: ["Prohostix", "pro hostix", "software company", "it firm", "it company"],
 };
 
 export default function RootLayout({
