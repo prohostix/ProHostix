@@ -31,27 +31,8 @@ const getBaseUrl = () => {
     return process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 };
 
-/**
- * generateStaticParams allows Next.js to statically generate these routes at build time.
- */
-export async function generateStaticParams() {
-    try {
-        const res = await fetch(`${getBaseUrl()}/blogs`, { next: { revalidate: 3600 } });
-        if (res.ok) {
-            const blogs: BlogPost[] = await res.json();
-            return blogs.map((post: any) => ({
-                slug: post.slug || post._id,
-            }));
-        }
-    } catch (e) {
-        console.warn("Failed to fetch blogs for static params:", e);
-    }
-
-    // Fallback to static blogs defined in config
-    return (blogContent as any).posts.map((post: any) => ({
-        slug: post.slug,
-    }));
-}
+// generateStaticParams removed to avoid build-time ECONNREFUSED errors.
+// Since the page is force-dynamic, it will be rendered on demand.
 
 async function getPost(slug: string): Promise<BlogPost | null> {
     try {

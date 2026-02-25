@@ -5,19 +5,8 @@ import { getAbsoluteImageUrl } from '@/utils/imageUrl';
 export const dynamic = 'force-dynamic';
 
 async function getSolution(slug: string) {
-    try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
-        const res = await fetch(`${apiUrl}/solutions`, { next: { revalidate: 60 } });
-        if (res.ok) {
-            const solutions = await res.json();
-            const found = solutions.find((s: any) => s.slug === slug);
-            if (found) return found;
-        }
-    } catch (e) {
-        // ignore
-    }
-
-    // Static fallback
+    // Rely on On-demand rendering (force-dynamic) to fetch from API at runtime
+    // Static fallback for build/fallback
     return SOLUTIONS.find((s: any) => s.slug === slug);
 }
 
