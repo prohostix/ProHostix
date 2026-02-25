@@ -5,7 +5,7 @@ import axios from 'axios';
 // Server-side: "http://localhost:3000/api" (direct to Next.js API Routes)
 const baseURL = typeof window !== 'undefined'
     ? '/api'
-    : (process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_SITE_URL}/api` : 'http://localhost:3000/api');
+    : (process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_SITE_URL}/api` : 'http://localhost:3000/api');
 
 const api = axios.create({
     baseURL,

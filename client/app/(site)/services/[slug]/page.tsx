@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ServiceDetailClient from '@/components/services/ServiceDetailClient';
 import { SERVICES } from '@/data/staticContent';
 import { getAbsoluteImageUrl } from '@/utils/imageUrl';
+export const dynamic = 'force-dynamic';
 
 async function getService(slug: string) {
     try {

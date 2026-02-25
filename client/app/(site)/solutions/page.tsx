@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import SolutionsClient from './SolutionsClient';
 import api from '@/utils/api';
 import { SOLUTIONS } from '@/data/staticContent';
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: 'Solutions | ProHostix',

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import SolutionDetailClient from '@/components/solutions/SolutionDetailClient';
 import { SOLUTIONS } from '@/data/staticContent';
 import { getAbsoluteImageUrl } from '@/utils/imageUrl';
+export const dynamic = 'force-dynamic';
 
 async function getSolution(slug: string) {
     try {

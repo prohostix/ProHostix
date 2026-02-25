@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import BlogDetailClient from '@/components/blog/BlogDetailClient';
 import { blogContent } from '@/config/blog/blogContent';
 import { getAbsoluteImageUrl } from '@/utils/imageUrl';
+export const dynamic = 'force-dynamic';
 
 // Define Post type to match what we expect
 interface BlogPost {

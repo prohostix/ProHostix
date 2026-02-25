@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import BlogClient from './BlogClient';
 import api from '@/utils/api';
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: 'Blog | ProHostix Insights',

@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import ServicesClient from './ServicesClient';
 import api from '@/utils/api';
 import { SERVICES } from '@/data/staticContent';
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: 'Services | ProHostix',

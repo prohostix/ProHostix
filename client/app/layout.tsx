@@ -6,6 +6,7 @@ import Providers from "@/components/providers/Providers";
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   title: "ProHostix",
   description: "Architecting high-performance digital ecosystems",
   keywords: ["Prohostix", "pro hostix", "software company", "it firm", "it company"],
