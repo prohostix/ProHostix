@@ -6,10 +6,14 @@ import Providers from "@/components/providers/Providers";
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://www.prohostix.com'),
   title: "ProHostix",
   description: "Architecting high-performance digital ecosystems",
   keywords: ["Prohostix", "pro hostix", "software company", "it firm", "it company"],
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
