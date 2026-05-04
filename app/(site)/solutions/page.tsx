@@ -6,8 +6,26 @@ import { SOLUTIONS } from '@/data/staticContent';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-    title: 'Solutions | ProHostix',
-    description: 'Intelligent digital solutions built for scale. Enterprise applications, SaaS platforms, and custom digital ecosystems.',
+    title: 'Digital Solutions | ERP, SaaS, CRM & Enterprise Platforms',
+    description: 'End-to-end digital solutions for businesses: custom ERP systems, SaaS platforms, CRM tools, AI-powered analytics, and enterprise-grade software ecosystems.',
+    keywords: [
+        'digital solutions',
+        'ERP solutions',
+        'SaaS platform development',
+        'CRM solutions',
+        'enterprise software solutions',
+        'AI software solutions',
+        'business automation software',
+        'custom digital solutions',
+        'IT solutions company',
+        'software solutions for business',
+    ],
+    openGraph: {
+        title: 'Digital Solutions | ProHostix',
+        description: 'End-to-end digital solutions: custom ERP systems, SaaS platforms, CRM tools, and enterprise-grade software ecosystems.',
+        url: 'https://www.prohostix.com/solutions',
+    },
+    alternates: { canonical: 'https://www.prohostix.com/solutions' },
 };
 
 /**

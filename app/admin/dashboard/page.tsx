@@ -25,7 +25,8 @@ import {
     Puzzle,
     Zap,
     Target,
-    Globe
+    Globe,
+    Building2
 } from 'lucide-react';
 
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
@@ -36,6 +37,7 @@ import Services from '@/components/admin/dashboard/Services';
 import Solutions from '@/components/admin/dashboard/Solutions';
 import Team from '@/components/admin/dashboard/Team';
 import Leadership from '@/components/admin/dashboard/Leadership';
+import Clients from '@/components/admin/dashboard/Clients';
 import Seo from '@/components/admin/dashboard/Seo';
 import Settings from '@/components/admin/dashboard/Settings';
 import { useDashboardStats } from '@/hooks/usePageData';
@@ -156,6 +158,7 @@ function DashboardContent() {
         { id: 'services', label: 'Services', icon: Briefcase },
         { id: 'solutions', label: 'Solutions', icon: Puzzle },
         { id: 'blogs', label: 'Blogs', icon: FileText },
+        { id: 'clients', label: 'Top Clients', icon: Building2 },
         { id: 'enquiries', label: 'Leads', icon: MessageSquare },
         { id: 'leadership', label: 'Board Members', icon: UserCircle },
         { id: 'seo', label: 'SEO Config', icon: Globe },
@@ -188,6 +191,7 @@ function DashboardContent() {
             case 'blogs': return <Blogs />;
             case 'services': return <Services />;
             case 'solutions': return <Solutions />;
+            case 'clients': return <Clients />;
             case 'enquiries': return <Enquiries initialTab={activeSubTab} />;
             case 'leadership': return <Leadership />;
             case 'seo': return <Seo />;

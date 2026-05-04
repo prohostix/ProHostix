@@ -17,6 +17,7 @@ import JobApplication from '../lib/models/JobApplication.js';
 import Subscriber from '../lib/models/Subscriber.js';
 import SocialLink from '../lib/models/SocialLink.js';
 import SeoMetadata from '../lib/models/SeoMetadata.js';
+import Client from '../lib/models/Client.js';
 import bcrypt from 'bcryptjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -384,7 +385,7 @@ const leaders = [
         name: "Dilshad Ashraf",
         desc: "Visionary leader driving enterprise-grade software intelligence and global operational strategy for ProHostix.",
         specialization: "Corporate Strategy",
-        avatar: "/working-professional.jpg"
+        avatar: "/dilshad-ashraf.jpg"
     },
     {
         role: "Vice President",
@@ -588,48 +589,210 @@ const socialLinksData = [
 const seoData = [
     {
         page: 'home',
-        title: 'ProHostix | Enterprise Software Development & Cloud Solutions',
-        description: 'ProHostix delivers custom enterprise software, cloud infrastructure, and AI-driven solutions to scale your business. Expert engineering for modern growth.',
-        keywords: ['enterprise software', 'cloud solutions', 'custom erp', 'software development', 'ai integration', ' web development', 'mobile apps'],
+        title: 'ProHostix | Custom Software Development Company',
+        description: 'ProHostix is a custom software development company building ERP systems, SaaS platforms, web & mobile apps, and cloud architectures for growing businesses worldwide.',
+        keywords: [
+            'software development company',
+            'custom software development',
+            'IT company',
+            'software company',
+            'ERP development company',
+            'SaaS development company',
+            'web application development',
+            'mobile app development',
+            'cloud architecture company',
+            'enterprise software development',
+            'software agency',
+            'IT firm',
+            'digital transformation company',
+            'CRM development',
+            'ProHostix'
+        ],
         robots: 'index, follow',
         ogImage: '/hero-ai.jpg',
-        canonicalUrl: 'https://prohostix.com'
+        canonicalUrl: 'https://www.prohostix.com'
     },
     {
         page: 'services',
-        title: 'Our Services | Custom Software & Cloud Engineering',
-        description: 'Explore our comprehensive engineering services: Web & Mobile App Development, ERP Systems, Cloud DevOps, and UI/UX Design.',
-        keywords: ['software services', 'web development', 'mobile app development', 'cloud devops', 'erp development', 'ui ux design'],
+        title: 'Software Development Services | Web, Mobile, ERP & Cloud',
+        description: 'Expert software development services: web applications, mobile apps, ERP systems, CRM platforms, cloud architecture & DevOps. Scalable solutions built for enterprise growth.',
+        keywords: [
+            'software development services',
+            'web application development',
+            'mobile app development',
+            'ERP development company',
+            'CRM software development',
+            'cloud architecture services',
+            'custom software services',
+            'IT services company',
+            'enterprise software development',
+            'SaaS development services',
+            'DevOps services',
+            'UI UX design services'
+        ],
         robots: 'index, follow',
         ogImage: '/web-arch.png',
-        canonicalUrl: 'https://prohostix.com/services'
+        canonicalUrl: 'https://www.prohostix.com/services'
     },
     {
         page: 'solutions',
-        title: 'Business Solutions | CRM, ERP & Automation',
-        description: 'Scalable business solutions designed for efficiency. Discover our CRM platforms, ERP systems, and business automation tools.',
-        keywords: ['business solutions', 'crm software', 'erp systems', 'business automation', 'saas platforms', 'enterprise applications'],
+        title: 'Digital Solutions | ERP, SaaS, CRM & Enterprise Platforms',
+        description: 'End-to-end digital solutions for businesses: custom ERP systems, SaaS platforms, CRM tools, AI-powered analytics, and enterprise-grade software ecosystems.',
+        keywords: [
+            'digital solutions',
+            'ERP solutions',
+            'SaaS platform development',
+            'CRM solutions',
+            'enterprise software solutions',
+            'AI software solutions',
+            'business automation software',
+            'custom digital solutions',
+            'IT solutions company',
+            'software solutions for business'
+        ],
         robots: 'index, follow',
         ogImage: '/software_solution_visual.jpg',
-        canonicalUrl: 'https://prohostix.com/solutions'
+        canonicalUrl: 'https://www.prohostix.com/solutions'
     },
     {
         page: 'case-studies',
-        title: 'Case Studies | Success Stories & Project Showcase',
-        description: 'See how ProHostix helps businesses transform. Read our case studies on custom ERPs, high-performance web apps, and cloud migrations.',
-        keywords: ['case studies', 'project portfolio', 'success stories', 'client work', 'software projects'],
+        title: 'Case Studies | Software Development Success Stories',
+        description: 'Explore real-world software development case studies from ProHostix — ERP systems, SaaS platforms, mobile apps, and enterprise solutions delivered for clients worldwide.',
+        keywords: [
+            'software development case studies',
+            'ERP case study',
+            'SaaS development case study',
+            'software company portfolio',
+            'IT company case studies',
+            'enterprise software examples',
+            'custom software success stories',
+            'web app case study',
+            'ProHostix portfolio'
+        ],
         robots: 'index, follow',
         ogImage: '/project_dashboard_preview_1770603074238.jpg',
-        canonicalUrl: 'https://prohostix.com/case-studies'
+        canonicalUrl: 'https://www.prohostix.com/case-studies'
     },
     {
         page: 'company',
-        title: 'About ProHostix | Engineering the Future',
-        description: 'Meet the team behind ProHostix. We are architects, engineers, and strategists dedicated to building resilient, scalable software systems.',
-        keywords: ['about us', 'company profile', 'software agency', 'tech team', 'engineering culture'],
+        title: 'About Us | Custom Software Development Company',
+        description: 'ProHostix is a custom software development company. Meet our leadership team and learn how we architect scalable ERP systems, SaaS platforms, and enterprise software.',
+        keywords: [
+            'about software company',
+            'software development company',
+            'IT company about us',
+            'custom software team',
+            'software engineering company',
+            'enterprise software company',
+            'ProHostix about',
+            'software company leadership',
+            'tech company about'
+        ],
         robots: 'index, follow',
         ogImage: '/working-professional.jpg',
-        canonicalUrl: 'https://prohostix.com/company'
+        canonicalUrl: 'https://www.prohostix.com/company'
+    },
+    {
+        page: 'blog',
+        title: 'Blog | Software Development Insights & Tech Articles',
+        description: 'Read expert articles on software development, ERP systems, cloud architecture, SaaS, mobile apps, and digital transformation from the ProHostix engineering team.',
+        keywords: [
+            'software development blog',
+            'tech articles',
+            'ERP insights',
+            'cloud architecture blog',
+            'SaaS development tips',
+            'software engineering blog',
+            'IT company blog',
+            'digital transformation articles'
+        ],
+        robots: 'index, follow',
+        ogImage: '/blog-hero.jpg',
+        canonicalUrl: 'https://www.prohostix.com/blog'
+    },
+    {
+        page: 'careers',
+        title: 'Careers at ProHostix | Software Engineering Jobs',
+        description: 'Join ProHostix — a fast-growing custom software development company. Explore open roles in software engineering, cloud architecture, mobile development, and more.',
+        keywords: [
+            'software engineering jobs',
+            'IT company careers',
+            'software developer jobs',
+            'tech jobs',
+            'software company hiring',
+            'engineering careers',
+            'ProHostix careers'
+        ],
+        robots: 'index, follow',
+        ogImage: '/careers-hero.png',
+        canonicalUrl: 'https://www.prohostix.com/careers'
+    },
+    {
+        page: 'lets-talk',
+        title: 'Contact Us | Get a Free Software Consultation',
+        description: 'Ready to build custom software? Contact ProHostix for a free consultation on ERP systems, web apps, mobile apps, SaaS platforms, or cloud architecture.',
+        keywords: [
+            'contact software company',
+            'free software consultation',
+            'hire software developers',
+            'custom software quote',
+            'software development inquiry',
+            'IT company contact'
+        ],
+        robots: 'index, follow',
+        ogImage: '/contact-hero.png',
+        canonicalUrl: 'https://www.prohostix.com/lets-talk'
+    }
+];
+
+const clients = [
+    {
+        name: "TechCorp Global",
+        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=TechCorp",
+        website: "https://techcorp.example.com",
+        order: 0,
+        active: true,
+        description: "Leading technology solutions provider"
+    },
+    {
+        name: "InnovateLabs",
+        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=InnovateLabs",
+        website: "https://innovatelabs.example.com",
+        order: 1,
+        active: true,
+        description: "Innovation and research company"
+    },
+    {
+        name: "DataFlow Systems",
+        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=DataFlow",
+        website: "https://dataflow.example.com",
+        order: 2,
+        active: true,
+        description: "Enterprise data management solutions"
+    },
+    {
+        name: "CloudScale Inc",
+        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=CloudScale",
+        website: "https://cloudscale.example.com",
+        order: 3,
+        active: true,
+        description: "Cloud infrastructure and scaling"
+    },
+    {
+        name: "SecureNet",
+        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=SecureNet",
+        website: "https://securenet.example.com",
+        order: 4,
+        active: true,
+        description: "Cybersecurity and network protection"
+    },
+    {
+        name: "FinTech Solutions",
+        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=FinTech",
+        website: "https://fintech.example.com",
+        order: 5,
+        active: true,
+        description: "Financial technology platform"
     }
 ];
 
@@ -653,6 +816,7 @@ const seedData = async () => {
         await Subscriber.deleteMany({});
         await SocialLink.deleteMany({});
         await SeoMetadata.deleteMany({});
+        await Client.deleteMany({});
 
         // Admin User (Upsert)
         const adminEmail = "admin@prohostix.com";
@@ -716,6 +880,7 @@ const seedData = async () => {
         await JobApplication.insertMany(jobApplications);
         await Subscriber.insertMany(subscribers);
         await SeoMetadata.insertMany(seoData);
+        await Client.insertMany(clients);
 
         console.log('All data collections seeded.');
 

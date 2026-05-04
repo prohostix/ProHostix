@@ -6,8 +6,26 @@ import { SERVICES } from '@/data/staticContent';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-    title: 'Services | ProHostix',
-    description: 'Expert engineering services including web development, mobile apps, ERP systems, and cloud architecture. Built with precision and scale in mind.',
+    title: 'Software Development Services | Web, Mobile, ERP & Cloud',
+    description: 'Expert software development services: web applications, mobile apps, ERP systems, CRM platforms, cloud architecture & DevOps. Scalable solutions built for enterprise growth.',
+    keywords: [
+        'software development services',
+        'web application development',
+        'mobile app development',
+        'ERP development company',
+        'CRM software development',
+        'cloud architecture services',
+        'custom software services',
+        'IT services company',
+        'enterprise software development',
+        'SaaS development services',
+    ],
+    openGraph: {
+        title: 'Software Development Services | ProHostix',
+        description: 'Expert software development services: web applications, mobile apps, ERP systems, CRM platforms, cloud architecture & DevOps.',
+        url: 'https://www.prohostix.com/services',
+    },
+    alternates: { canonical: 'https://www.prohostix.com/services' },
 };
 
 /**

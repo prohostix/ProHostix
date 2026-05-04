@@ -14,12 +14,21 @@ export async function generateMetadata(): Promise<Metadata> {
             description: seo.description,
             keywords: seo.keywords,
             openGraph: {
+                type: 'website',
                 title: seo.title,
                 description: seo.description,
-                ...(seo.ogImage && { images: [{ url: seo.ogImage }] })
+                url: 'https://www.prohostix.com',
+                siteName: 'ProHostix',
+                ...(seo.ogImage && { images: [{ url: seo.ogImage, width: 1200, height: 630, alt: seo.title }] })
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: seo.title,
+                description: seo.description,
+                ...(seo.ogImage && { images: [seo.ogImage] }),
             },
             alternates: {
-                canonical: seo.canonicalUrl
+                canonical: seo.canonicalUrl || 'https://www.prohostix.com'
             },
             robots: {
                 index: seo.robots?.includes('noindex') ? false : true,
@@ -29,8 +38,35 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     return {
-        title: 'ProHostix | Architecting High-Performance Digital Ecosystems',
-        description: 'ProHostix specializes in building intelligent, scalable digital solutions, from custom ERPs and SaaS platforms to complex cloud architectures.',
+        title: 'ProHostix | Custom Software Development Company',
+        description: 'ProHostix is a custom software development company building ERP systems, SaaS platforms, web & mobile apps, and cloud architectures for growing businesses worldwide.',
+        keywords: [
+            'software development company',
+            'custom software development',
+            'IT company',
+            'ERP development company',
+            'SaaS development',
+            'web application development',
+            'mobile app development',
+            'software agency',
+            'enterprise software company',
+            'cloud architecture',
+        ],
+        openGraph: {
+            type: 'website',
+            title: 'ProHostix | Custom Software Development Company',
+            description: 'Building ERP systems, SaaS platforms, web & mobile apps, and cloud architectures for growing businesses.',
+            url: 'https://www.prohostix.com',
+            siteName: 'ProHostix',
+            images: [{ url: '/hero-ai.jpg', width: 1200, height: 630, alt: 'ProHostix - Custom Software Development' }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: 'ProHostix | Custom Software Development Company',
+            description: 'Building ERP systems, SaaS platforms, web & mobile apps, and cloud architectures for growing businesses.',
+            images: ['/hero-ai.jpg'],
+        },
+        alternates: { canonical: 'https://www.prohostix.com' },
     };
 }
 

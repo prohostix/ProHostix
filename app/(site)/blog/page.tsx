@@ -5,8 +5,26 @@ import api from '@/utils/api';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-    title: 'Blog | ProHostix Insights',
-    description: 'Explore the latest insights on software engineering, cloud architecture, and digital transformation from the ProHostix team.',
+    title: 'Blog | Software Development Insights & Tech Articles',
+    description: 'Read expert articles on software development, ERP systems, cloud architecture, SaaS, mobile apps, and digital transformation from the ProHostix engineering team.',
+    keywords: [
+        'software development blog',
+        'tech articles',
+        'ERP insights',
+        'cloud architecture blog',
+        'SaaS development tips',
+        'software engineering blog',
+        'IT company blog',
+        'digital transformation articles',
+        'web development insights',
+        'ProHostix blog',
+    ],
+    openGraph: {
+        title: 'Blog | ProHostix Software Development Insights',
+        description: 'Expert articles on software development, ERP systems, cloud architecture, and digital transformation.',
+        url: 'https://www.prohostix.com/blog',
+    },
+    alternates: { canonical: 'https://www.prohostix.com/blog' },
 };
 
 import { blogContent } from '@/config/blog/blogContent';

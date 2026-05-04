@@ -6,6 +6,7 @@ import CoreSpecializations from "@/components/home/CoreSpecializations";
 import OperationalExcellence from "@/components/home/OperationalExcellence";
 import ScalableIntelligence from "@/components/home/ScalableIntelligence";
 import PioneerWork from "@/components/home/PioneerWork";
+import TopClients from "@/components/home/TopClients";
 import LatestInsights from "@/components/home/LatestInsights";
 import CTASection from "@/components/home/CTASection";
 
@@ -21,6 +22,7 @@ export default function HomeClient({ latestBlogs }: HomeClientProps) {
             <OperationalExcellence />
             <ScalableIntelligence />
             <PioneerWork />
+            <TopClients />
             <LatestInsights blogs={latestBlogs} />
             <CTASection />
         </div>
