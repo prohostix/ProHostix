@@ -92,7 +92,7 @@ export default function RootLayout({
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
-      "email": "hello@prohostix.com",
+      "email": "info@prohostix.com",
       "availableLanguage": "English"
     },
     "sameAs": [

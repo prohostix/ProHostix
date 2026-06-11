@@ -83,6 +83,13 @@ const Footer = () => {
                                     </a>
                                 ))
                             )}
+                            <a
+                                href={`mailto:${settings?.contactEmail || "info@prohostix.com"}`}
+                                title="Send Email"
+                                className="w-10 h-10 flex items-center justify-center bg-white/[0.03] border border-white/10 rounded-xl text-white/40 hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all duration-300"
+                            >
+                                <Mail size={20} />
+                            </a>
                         </div>
                     </div>
 

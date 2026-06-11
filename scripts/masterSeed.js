@@ -28,9 +28,9 @@ const siteSettings = {
     brandWordmarkPart1: "Pro",
     brandWordmarkPart2: "Hostix",
     logoLetter: "P",
-    contactEmail: "hello@prohostix.com",
+    contactEmail: "info@prohostix.com",
     contactPhone: "+1 (555) 000-0000",
-    address: "Global Tech Hub, Suite 100",
+    address: "A-18 Sector 59, Office No G-07, Jav Tower, Noida, Gautam Buddha Nagar, Noida, Uttar Pradesh, India, 201301",
     socialLinks: {
         x: "https://x.com/prohostix",
         instagram: "https://instagram.com/prohostix",
@@ -392,7 +392,7 @@ const leaders = [
         name: "Akhilesh Semwal",
         desc: "Strategic executive overseeing operational excellence and partnership growth with a focus on high-scale delivery.",
         specialization: "Operations",
-        avatar: "/working-professional.jpg"
+        avatar: "/akhilesh-semwal.jpg"
     }
 ];
 
