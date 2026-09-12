@@ -22,6 +22,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         keywords: solution.tags || [],
         openGraph: {
             images: solution.illustration ? [getAbsoluteImageUrl(solution.illustration)] : [],
+            type: 'website',
+        },
+        alternates: {
+            canonical: `/solutions/${slug}`,
         }
     };
 }
@@ -29,5 +33,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const solution = await getSolution(slug);
-    return <SolutionDetailClient solution={solution} />;
+
+    if (!solution) {
+        return <div>Solution not found</div>;
+    }
+
+    const solutionSchema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": solution.title,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": solution.description,
+        "provider": {
+            "@type": "Organization",
+            "name": "ProHostix",
+            "url": "https://www.prohostix.com"
+        }
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(solutionSchema) }}
+            />
+            <SolutionDetailClient solution={solution} />
+        </>
+    );
 }

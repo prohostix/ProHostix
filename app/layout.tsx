@@ -28,6 +28,10 @@ export const metadata: Metadata = {
     "digital transformation",
     "software agency",
     "ProHostix",
+    "software development company in Noida",
+    "IT companies in Noida",
+    "software services Noida",
+    "top IT company in India"
   ],
   authors: [{ name: "ProHostix", url: "https://www.prohostix.com" }],
   creator: "ProHostix",
@@ -81,14 +85,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organizationSchema = {
+  const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["LocalBusiness", "Organization"],
     "name": "ProHostix",
     "url": "https://www.prohostix.com",
     "logo": "https://www.prohostix.com/logo.png",
-    "description": "ProHostix is a custom software development company specializing in ERP systems, CRM platforms, SaaS products, web & mobile apps, and cloud architecture.",
+    "description": "ProHostix is a custom software development company in Noida, specializing in ERP systems, CRM platforms, SaaS products, web & mobile apps, and cloud architecture.",
     "foundingDate": "2020",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "A-18 Sector 59, Office No G-07, Jav Tower",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
@@ -101,8 +113,13 @@ export default function RootLayout({
       "https://facebook.com/prohostix"
     ],
     "serviceArea": {
-      "@type": "Place",
-      "name": "Worldwide"
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.5355,
+        "longitude": 77.3910
+      },
+      "geoRadius": "1000"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -139,7 +156,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <script
           type="application/ld+json"

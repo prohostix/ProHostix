@@ -49,7 +49,44 @@ export default async function ServicesPage() {
         // Fallback to static SERVICES is already handled by initial value
     }
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What software development services does ProHostix offer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ProHostix offers comprehensive software development services including custom ERP development, CRM solutions, SaaS platform architecture, web and mobile app development, and robust cloud DevOps integrations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you build custom ERP systems?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we specialize in architecting modular, scalable custom ERP systems that unify business operations, finance, HR, and supply chain management for mid-to-large enterprises."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you ensure software scalability and security?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We follow secure-by-design principles, utilize cloud-native infrastructure, enforce role-based access controls, and perform rigorous testing and monitoring to ensure applications can scale efficiently without compromising security."
+                }
+            }
+        ]
+    };
+
     return (
-        <ServicesClient services={services} />
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <ServicesClient services={services} />
+        </>
     );
 };

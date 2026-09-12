@@ -51,6 +51,11 @@ export async function generateMetadata(): Promise<Metadata> {
             'software agency',
             'enterprise software company',
             'cloud architecture',
+            'software development company in Noida',
+            'IT companies in Noida',
+            'software services Noida',
+            'top IT company in India',
+            'enterprise software development India'
         ],
         openGraph: {
             type: 'website',

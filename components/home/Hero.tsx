@@ -19,7 +19,7 @@ export default function Hero() {
             <div className="absolute inset-0 z-0">
                 <img
                     src={heroData.imageUrl}
-                    alt=""
+                    alt="ProHostix Custom Software Development"
                     className="w-full h-full object-cover opacity-[0.25] grayscale brightness-[0.4]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
@@ -47,10 +47,10 @@ export default function Hero() {
                     )}
 
                     {/* Headline */}
-                    <div className="flex flex-col mb-8">
+                    <h1 className="flex flex-col mb-8 text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.8] bg-gradient-to-br from-white via-white/90 to-emerald-500 bg-clip-text text-transparent">
                         {["SOFTWARE SOLUTIONS", "FOR GROWING BUSINESS"].map((line, idx) => (
-                            <div key={idx} className="relative">
-                                <motion.h1
+                            <div key={idx} className="relative block">
+                                <motion.span
                                     initial={{ opacity: 0, x: -100 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: false, amount: 0.5 }}
@@ -59,13 +59,13 @@ export default function Hero() {
                                         delay: idx * 0.1,
                                         ease: [0.22, 1, 0.36, 1]
                                     }}
-                                    className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.8] bg-gradient-to-br from-white via-white/90 to-emerald-500 bg-clip-text text-transparent"
+                                    className="block"
                                 >
                                     {line}
-                                </motion.h1>
+                                </motion.span>
                             </div>
                         ))}
-                    </div>
+                    </h1>
 
                     {/* Subheading */}
                     <motion.p

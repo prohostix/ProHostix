@@ -4,11 +4,9 @@ import { MetadataRoute } from 'next'
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.prohostix.com'
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    // skip dynamic fetching if we're in build and no production API URL is available
-    // to prevent ECONNREFUSED from localhost
-    const isBuildPhase = typeof window === 'undefined' && !process.env.NEXT_PUBLIC_API_URL && API_URL.includes('localhost');
+export const dynamic = 'force-dynamic';
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Define static routes
     const staticPaths = [
         '',
@@ -19,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/company',
         '/lets-talk',
         '/blog',
-        '/contact'
+        '/privacy'
     ];
 
     const staticRoutes = staticPaths.map((route) => ({
@@ -29,22 +27,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: route === '' ? 1 : 0.8,
     }));
 
-    if (isBuildPhase) {
-        return staticRoutes;
-    }
-
     try {
         // Fetch dynamic slugs in parallel
-        const [blogsRes, servicesRes, solutionsRes] = await Promise.all([
+        const [blogsRes, servicesRes, solutionsRes, caseStudiesRes] = await Promise.all([
             fetch(`${API_URL}/blogs`, { next: { revalidate: 3600 } }),
             fetch(`${API_URL}/services`, { next: { revalidate: 3600 } }),
-            fetch(`${API_URL}/solutions`, { next: { revalidate: 3600 } })
+            fetch(`${API_URL}/solutions`, { next: { revalidate: 3600 } }),
+            fetch(`${API_URL}/case-studies`, { next: { revalidate: 3600 } })
         ]);
 
-        const [blogs, services, solutions] = await Promise.all([
+        const [blogs, services, solutions, caseStudies] = await Promise.all([
             blogsRes.ok ? blogsRes.json() : [],
             servicesRes.ok ? servicesRes.json() : [],
-            solutionsRes.ok ? solutionsRes.json() : []
+            solutionsRes.ok ? solutionsRes.json() : [],
+            caseStudiesRes.ok ? caseStudiesRes.json() : []
         ]);
 
         // Blog Routes
@@ -70,11 +66,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'monthly' as const,
             priority: 0.7,
         })) : [];
+        
+        // Case Study Routes
+        const caseStudyRoutes = Array.isArray(caseStudies) ? caseStudies.map((study: any) => ({
+            url: `${baseUrl}/case-studies/${study.slug}`,
+            lastModified: new Date(study.updatedAt || study.createdAt || new Date()),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        })) : [];
 
-        return [...staticRoutes, ...blogRoutes, ...serviceRoutes, ...solutionRoutes];
+        return [...staticRoutes, ...blogRoutes, ...serviceRoutes, ...solutionRoutes, ...caseStudyRoutes];
     } catch (error) {
         console.error('Error generating dynamic sitemap:', error);
         return staticRoutes;
     }
 }
-

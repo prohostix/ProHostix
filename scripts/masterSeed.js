@@ -606,7 +606,12 @@ const seoData = [
             'IT firm',
             'digital transformation company',
             'CRM development',
-            'ProHostix'
+            'ProHostix',
+            'software development company in Noida',
+            'IT companies in Noida',
+            'software services Noida',
+            'top IT company in India',
+            'enterprise software development India'
         ],
         robots: 'index, follow',
         ogImage: '/hero-ai.jpg',
@@ -628,7 +633,10 @@ const seoData = [
             'enterprise software development',
             'SaaS development services',
             'DevOps services',
-            'UI UX design services'
+            'UI UX design services',
+            'ERP development in Noida',
+            'best IT services company in India',
+            'custom software solutions in UP'
         ],
         robots: 'index, follow',
         ogImage: '/web-arch.png',
@@ -648,7 +656,10 @@ const seoData = [
             'business automation software',
             'custom digital solutions',
             'IT solutions company',
-            'software solutions for business'
+            'software solutions for business',
+            'enterprise ERP solutions India',
+            'CRM software Noida',
+            'AI integration services'
         ],
         robots: 'index, follow',
         ogImage: '/software_solution_visual.jpg',
@@ -686,7 +697,9 @@ const seoData = [
             'enterprise software company',
             'ProHostix about',
             'software company leadership',
-            'tech company about'
+            'tech company about',
+            'IT company in Noida',
+            'software developers Noida'
         ],
         robots: 'index, follow',
         ogImage: '/working-professional.jpg',

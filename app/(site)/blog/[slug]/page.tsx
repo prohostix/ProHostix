@@ -79,6 +79,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         openGraph: {
             images: [post.image],
             type: 'article',
+        },
+        alternates: {
+            canonical: `/blog/${slug}`,
         }
     };
 }
@@ -86,5 +89,43 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function Page({ params }: { params: Promise<{ slug: string }> }): Promise<React.ReactElement> {
     const { slug } = await params;
     const post = await getPost(slug);
-    return <BlogDetailClient post={post} />;
+
+    if (!post) {
+        return <div>Post not found</div>;
+    }
+
+    const blogSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": post.image,
+        "author": {
+            "@type": "Person",
+            "name": post.author || "ProHostix Team"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ProHostix",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.prohostix.com/logo.png"
+            }
+        },
+        "datePublished": post.date || post.createdAt || new Date().toISOString(),
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://www.prohostix.com/blog/${slug}`
+        }
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+            />
+            <BlogDetailClient post={post} />
+        </>
+    );
 }

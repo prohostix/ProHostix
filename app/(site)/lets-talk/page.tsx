@@ -23,5 +23,30 @@ export const metadata: Metadata = {
 };
 
 export default function LetsTalk() {
-    return <LetsTalkClient />;
+    const contactSchema = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact ProHostix",
+        "description": "Get a free consultation for your custom software project.",
+        "url": "https://www.prohostix.com/lets-talk",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "ProHostix",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "info@prohostix.com",
+                "contactType": "customer service"
+            }
+        }
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+            />
+            <LetsTalkClient />
+        </>
+    );
 }
