@@ -61,6 +61,7 @@ const Footer = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title={social.platform}
+                                            aria-label={`Visit our ${social.platform} page`}
                                             className="w-10 h-10 flex items-center justify-center bg-white/[0.03] border border-white/10 rounded-xl text-white/40 hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all duration-300"
                                         >
                                             <IconComponent size={20} />
@@ -78,6 +79,7 @@ const Footer = () => {
                                         href={social.href || "#"}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label={`Visit our ${social.label} page`}
                                         className="w-10 h-10 flex items-center justify-center bg-white/[0.03] border border-white/10 rounded-xl text-white/40 hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all duration-300"
                                     >
                                         <social.icon size={20} />
@@ -87,6 +89,7 @@ const Footer = () => {
                             <a
                                 href={`mailto:${settings?.contactEmail || "info@prohostix.com"}`}
                                 title="Send Email"
+                                aria-label="Send email"
                                 className="w-10 h-10 flex items-center justify-center bg-white/[0.03] border border-white/10 rounded-xl text-white/40 hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all duration-300"
                             >
                                 <Mail size={20} />

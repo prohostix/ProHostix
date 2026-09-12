@@ -167,7 +167,7 @@ export const SideNavigation = memo(() => {
                                     </div>
                                     <span className="font-bold text-xl">{settings?.companyName || "ProHostix"}</span>
                                 </div>
-                                <button onClick={() => setIsDrawerOpen(false)} className="p-2 text-gray-500"><X size={28} /></button>
+                                <button aria-label="Close navigation menu" onClick={() => setIsDrawerOpen(false)} className="p-2 text-gray-500"><X size={28} /></button>
                             </div>
 
                             <nav className="flex-grow flex flex-col justify-start gap-2 overflow-y-auto custom-scrollbar -mx-2 px-2">
@@ -242,6 +242,7 @@ export const SideNavigation = memo(() => {
 
                 <div className="flex items-center gap-2 shrink-0">
                     <button
+                        aria-label="Toggle search"
                         onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
                         className={`w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-xl transition-all font-bold ${isMobileSearchOpen ? 'text-emerald-400 bg-emerald-500/10' : 'text-gray-400 hover:text-emerald-400'}`}
                     >
@@ -265,6 +266,7 @@ export const SideNavigation = memo(() => {
                         <MessageSquare size={16} className="xs:hidden" />
                     </Link>
                     <button
+                        aria-label="Open navigation menu"
                         onClick={() => setIsDrawerOpen(true)}
                         className={`w-10 h-10 md:w-11 md:h-11 ${forceHamburger ? 'flex' : 'md:hidden'} items-center justify-center rounded-xl text-gray-400 hover:text-emerald-400 transition-all font-bold`}
                     >
