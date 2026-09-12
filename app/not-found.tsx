@@ -3,15 +3,13 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Home, LayoutGrid } from 'lucide-react';
-import Navigation from '@/components/common/Navigation';
-import Footer from '@/components/common/Footer';
+import SiteLayout from '@/components/layout/SiteLayout';
 
 export default function NotFound() {
   return (
-    <>
-      <Navigation />
-      <main className="min-h-screen bg-black flex items-center justify-center pt-24 pb-16 px-4">
-        <div className="max-w-3xl mx-auto text-center space-y-12">
+    <SiteLayout>
+      <div className="flex flex-col items-center justify-center pt-32 pb-16 px-4">
+        <div className="max-w-3xl mx-auto text-center space-y-12 mt-12">
           {/* Animated 404 Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,8 +65,7 @@ export default function NotFound() {
             </code>
           </motion.div>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </SiteLayout>
   );
 }
