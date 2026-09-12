@@ -1,5 +1,6 @@
 'use client';
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { HERO_CONTENT } from "../../data/staticContent";
@@ -17,10 +18,14 @@ export default function Hero() {
         <section className="relative w-full min-h-[85vh] pt-32 pb-16 flex items-center bg-black overflow-hidden">
             {/* Background Image with Overlays */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src={heroData.imageUrl}
                     alt="ProHostix Custom Software Development"
-                    className="w-full h-full object-cover opacity-[0.25] grayscale brightness-[0.4]"
+                    fill
+                    priority
+                    sizes="100vw"
+                    style={{ objectFit: 'cover' }}
+                    className="opacity-[0.25] grayscale brightness-[0.4]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />

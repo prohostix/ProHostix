@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
     ArrowLeft,
@@ -65,14 +66,14 @@ const ServiceDetailClient: React.FC<ServiceDetailClientProps> = ({ service }) =>
                 <div className="absolute inset-x-0 -top-24 bottom-0 z-0 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#070707]/60 to-[#070707] z-10" />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#070707] via-transparent to-[#070707]/20 z-10" />
-                    <img
+                    <Image
                         src={service.illustration ? getAbsoluteImageUrl(service.illustration) : "/hero-ai.jpg"}
                         alt={service.title}
-                        onError={(e: any) => {
-                            e.target.onerror = null;
-                            e.target.src = "/hero-ai.jpg";
-                        }}
-                        className="w-full h-full object-cover opacity-50 scale-105"
+                        fill
+                        priority
+                        sizes="100vw"
+                        style={{ objectFit: 'cover' }}
+                        className="opacity-50 scale-105"
                     />
                 </div>
 

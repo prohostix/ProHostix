@@ -3,6 +3,7 @@
 import { Facebook, Instagram, X, Mail, Send, Loader2, CheckCircle2, Globe } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -40,8 +41,8 @@ const Footer = () => {
                     {/* Brand & Mission Section */}
                     <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                         <Link href="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-3 mb-5 group transition-transform hover:scale-105 duration-300">
-                            <div className="w-10 h-10 flex items-center justify-center bg-transparent transition-all">
-                                <img src="/logo.png" alt="Logo" className="w-full h-full object-contain pointer-events-none" />
+                            <div className="w-10 h-10 flex items-center justify-center bg-transparent transition-all relative">
+                                <Image src="/logo.png" alt="Logo" fill className="object-contain pointer-events-none" sizes="40px" />
                             </div>
                             <span className="text-2xl font-bold tracking-tight text-white">{settings?.companyName || "ProHostix"}</span>
                         </Link>

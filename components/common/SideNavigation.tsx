@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, memo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -161,8 +162,8 @@ export const SideNavigation = memo(() => {
                         >
                             <div className="flex justify-between items-center mb-6">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-10 h-10 flex items-center justify-center bg-transparent">
-                                        <img src="/logo.png" alt="ProHostix Logo" className="w-full h-full object-contain pointer-events-none" />
+                                    <div className="w-10 h-10 flex items-center justify-center bg-transparent relative">
+                                        <Image src="/logo.png" alt="ProHostix Logo" fill className="object-contain pointer-events-none" sizes="40px" />
                                     </div>
                                     <span className="font-bold text-xl">{settings?.companyName || "ProHostix"}</span>
                                 </div>
@@ -211,8 +212,8 @@ export const SideNavigation = memo(() => {
                     : 'bg-[#0B0F14]/95 backdrop-blur-xl border-b border-white/5 shadow-lg'}`}>
 
                 <Link href="/" className="flex items-center gap-2 shrink-0">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl overflow-hidden flex items-center justify-center bg-transparent">
-                        <img src="/logo.png" alt="ProHostix Logo" className="w-full h-full object-contain pointer-events-none" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl overflow-hidden flex items-center justify-center bg-transparent relative">
+                        <Image src="/logo.png" alt="ProHostix Logo" fill className="object-contain pointer-events-none" sizes="40px" />
                     </div>
                     <span className="font-bold text-lg md:text-xl text-white tracking-tighter">
                         {settings?.companyName || "ProHostix"}
