@@ -19,7 +19,13 @@ export const metadata: Metadata = {
         description: "Join ProHostix and help build the next generation of enterprise software. Explore open engineering roles.",
         url: "https://www.prohostix.com/careers",
     },
-    alternates: { canonical: "https://www.prohostix.com/careers" },
+    alternates: {
+        canonical: "https://www.prohostix.com/careers",
+        languages: {
+            'x-default': "https://www.prohostix.com/careers",
+            'en': "https://www.prohostix.com/careers",
+        }
+    },
 };
 
 export default function Careers() {

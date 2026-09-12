@@ -82,6 +82,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         },
         alternates: {
             canonical: `/blog/${slug}`,
+            languages: {
+                'x-default': `/blog/${slug}`,
+                'en': `/blog/${slug}`,
+            }
         }
     };
 }

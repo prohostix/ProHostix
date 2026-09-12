@@ -20,7 +20,13 @@ export const metadata: Metadata = {
         description: 'Meet the team behind ProHostix — architects, engineers, and strategists building scalable software for growing businesses.',
         url: 'https://www.prohostix.com/company',
     },
-    alternates: { canonical: 'https://www.prohostix.com/company' },
+    alternates: {
+        canonical: 'https://www.prohostix.com/company',
+        languages: {
+            'x-default': 'https://www.prohostix.com/company',
+            'en': 'https://www.prohostix.com/company',
+        }
+    },
 };
 
 export default function CompanyPage() {

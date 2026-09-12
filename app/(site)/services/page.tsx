@@ -25,7 +25,13 @@ export const metadata: Metadata = {
         description: 'Expert software development services: web applications, mobile apps, ERP systems, CRM platforms, cloud architecture & DevOps.',
         url: 'https://www.prohostix.com/services',
     },
-    alternates: { canonical: 'https://www.prohostix.com/services' },
+    alternates: {
+        canonical: 'https://www.prohostix.com/services',
+        languages: {
+            'x-default': 'https://www.prohostix.com/services',
+            'en': 'https://www.prohostix.com/services',
+        }
+    },
 };
 
 /**

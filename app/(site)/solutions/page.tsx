@@ -25,7 +25,13 @@ export const metadata: Metadata = {
         description: 'End-to-end digital solutions: custom ERP systems, SaaS platforms, CRM tools, and enterprise-grade software ecosystems.',
         url: 'https://www.prohostix.com/solutions',
     },
-    alternates: { canonical: 'https://www.prohostix.com/solutions' },
+    alternates: {
+        canonical: 'https://www.prohostix.com/solutions',
+        languages: {
+            'x-default': 'https://www.prohostix.com/solutions',
+            'en': 'https://www.prohostix.com/solutions',
+        }
+    },
 };
 
 /**

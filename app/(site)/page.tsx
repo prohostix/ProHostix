@@ -28,7 +28,11 @@ export async function generateMetadata(): Promise<Metadata> {
                 ...(seo.ogImage && { images: [seo.ogImage] }),
             },
             alternates: {
-                canonical: seo.canonicalUrl || 'https://www.prohostix.com'
+                canonical: seo.canonicalUrl || 'https://www.prohostix.com',
+                languages: {
+                    'x-default': seo.canonicalUrl || 'https://www.prohostix.com',
+                    'en': seo.canonicalUrl || 'https://www.prohostix.com',
+                }
             },
             robots: {
                 index: seo.robots?.includes('noindex') ? false : true,
@@ -71,7 +75,13 @@ export async function generateMetadata(): Promise<Metadata> {
             description: 'Building ERP systems, SaaS platforms, web & mobile apps, and cloud architectures for growing businesses.',
             images: ['/hero-ai.jpg'],
         },
-        alternates: { canonical: 'https://www.prohostix.com' },
+        alternates: { 
+            canonical: 'https://www.prohostix.com',
+            languages: {
+                'x-default': 'https://www.prohostix.com',
+                'en': 'https://www.prohostix.com',
+            }
+        },
     };
 }
 

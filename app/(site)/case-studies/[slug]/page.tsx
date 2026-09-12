@@ -28,6 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         },
         alternates: {
             canonical: `/case-studies/${slug}`,
+            languages: {
+                'x-default': `/case-studies/${slug}`,
+                'en': `/case-studies/${slug}`,
+            }
         }
     };
 }

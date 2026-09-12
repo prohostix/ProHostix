@@ -76,6 +76,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.prohostix.com",
+    languages: {
+      'x-default': 'https://www.prohostix.com',
+      'en': 'https://www.prohostix.com',
+    },
   },
   category: "technology",
 };
@@ -112,14 +116,9 @@ export default function RootLayout({
       "https://instagram.com/prohostix",
       "https://facebook.com/prohostix"
     ],
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 28.5355,
-        "longitude": 77.3910
-      },
-      "geoRadius": "1000"
+    "areaServed": {
+      "@type": "GeoShape",
+      "addressCountry": "Global"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",

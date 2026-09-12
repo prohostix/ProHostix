@@ -24,7 +24,13 @@ export const metadata: Metadata = {
         description: 'Expert articles on software development, ERP systems, cloud architecture, and digital transformation.',
         url: 'https://www.prohostix.com/blog',
     },
-    alternates: { canonical: 'https://www.prohostix.com/blog' },
+    alternates: {
+        canonical: 'https://www.prohostix.com/blog',
+        languages: {
+            'x-default': 'https://www.prohostix.com/blog',
+            'en': 'https://www.prohostix.com/blog',
+        }
+    },
 };
 
 import { blogContent } from '@/config/blog/blogContent';

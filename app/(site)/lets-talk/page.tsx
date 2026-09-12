@@ -19,7 +19,13 @@ export const metadata: Metadata = {
         description: "Get a free consultation for your custom software project — ERP, web apps, mobile apps, SaaS, or cloud architecture.",
         url: "https://www.prohostix.com/lets-talk",
     },
-    alternates: { canonical: "https://www.prohostix.com/lets-talk" },
+    alternates: {
+        canonical: "https://www.prohostix.com/lets-talk",
+        languages: {
+            'x-default': "https://www.prohostix.com/lets-talk",
+            'en': "https://www.prohostix.com/lets-talk",
+        }
+    },
 };
 
 export default function LetsTalk() {

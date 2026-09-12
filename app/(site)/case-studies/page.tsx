@@ -20,7 +20,13 @@ export const metadata: Metadata = {
         description: 'Real-world software development case studies — ERP systems, SaaS platforms, and enterprise solutions delivered for clients worldwide.',
         url: 'https://www.prohostix.com/case-studies',
     },
-    alternates: { canonical: 'https://www.prohostix.com/case-studies' },
+    alternates: {
+        canonical: 'https://www.prohostix.com/case-studies',
+        languages: {
+            'x-default': 'https://www.prohostix.com/case-studies',
+            'en': 'https://www.prohostix.com/case-studies',
+        }
+    },
 };
 
 export default function CaseStudiesPage() {

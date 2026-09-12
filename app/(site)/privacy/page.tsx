@@ -17,7 +17,13 @@ export const metadata: Metadata = {
         description: 'Read our security protocols and privacy standards for enterprise custom software systems.',
         url: 'https://www.prohostix.com/privacy',
     },
-    alternates: { canonical: 'https://www.prohostix.com/privacy' },
+    alternates: {
+        canonical: 'https://www.prohostix.com/privacy',
+        languages: {
+            'x-default': 'https://www.prohostix.com/privacy',
+            'en': 'https://www.prohostix.com/privacy',
+        }
+    },
 };
 
 export default function PrivacyPage() {
