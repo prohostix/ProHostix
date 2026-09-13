@@ -104,6 +104,7 @@ const Footer = () => {
                             <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] opacity-90 border-b border-emerald-500/20 pb-2 w-fit">Company</h4>
                             <div className="flex flex-col gap-3">
                                 <Link href="/company" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">About Us</Link>
+                                <Link href="/company/ceo" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">Leadership</Link>
                                 <Link href="/case-studies" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">Case Studies</Link>
                                 <Link href="/blog" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">Insights</Link>
                                 <Link href="/careers" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">Careers</Link>
