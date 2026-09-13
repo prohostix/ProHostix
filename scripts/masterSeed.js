@@ -758,56 +758,7 @@ const seoData = [
     }
 ];
 
-const clients = [
-    {
-        name: "TechCorp Global",
-        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=TechCorp",
-        website: "https://techcorp.example.com",
-        order: 0,
-        active: true,
-        description: "Leading technology solutions provider"
-    },
-    {
-        name: "InnovateLabs",
-        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=InnovateLabs",
-        website: "https://innovatelabs.example.com",
-        order: 1,
-        active: true,
-        description: "Innovation and research company"
-    },
-    {
-        name: "DataFlow Systems",
-        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=DataFlow",
-        website: "https://dataflow.example.com",
-        order: 2,
-        active: true,
-        description: "Enterprise data management solutions"
-    },
-    {
-        name: "CloudScale Inc",
-        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=CloudScale",
-        website: "https://cloudscale.example.com",
-        order: 3,
-        active: true,
-        description: "Cloud infrastructure and scaling"
-    },
-    {
-        name: "SecureNet",
-        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=SecureNet",
-        website: "https://securenet.example.com",
-        order: 4,
-        active: true,
-        description: "Cybersecurity and network protection"
-    },
-    {
-        name: "FinTech Solutions",
-        logo: "https://via.placeholder.com/200x100/1a1a1a/10b981?text=FinTech",
-        website: "https://fintech.example.com",
-        order: 5,
-        active: true,
-        description: "Financial technology platform"
-    }
-];
+const clients = [];
 
 const seedData = async () => {
     try {
