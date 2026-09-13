@@ -229,7 +229,6 @@ export default function CompanyClient() {
                                 {/* Vertical Divider (Desktop) */}
                                 <div className="hidden md:block w-px bg-white/5 my-6" />
 
-                                {/* Content Section */}
                                 <div className="flex-grow p-6 md:p-10 flex flex-col justify-center">
                                     <div className="space-y-3 mb-6">
                                         <div className="flex flex-col gap-2">
@@ -245,14 +244,31 @@ export default function CompanyClient() {
                                     {/* Horizontal element replaced/accentuated */}
                                     <div className="h-px w-24 bg-emerald-500/30 mb-6" />
 
-                                    <p className="text-white/60 text-lg leading-relaxed font-medium">
+                                    <p className="text-white/60 text-lg leading-relaxed font-medium mb-8">
                                         {member.desc}
                                     </p>
 
+                                    {/* Link to Full Profile if CEO */}
+                                    {member.name === "Dilshad Ashraf" && (
+                                        <div className="mt-auto">
+                                            <button 
+                                                onClick={() => router.push('/company/ceo')}
+                                                className="inline-flex items-center text-sm font-bold uppercase tracking-widest text-emerald-500 hover:text-emerald-400 transition-colors"
+                                            >
+                                                Read Full Profile
+                                                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    )}
+
                                     {/* Design Accent */}
-                                    <div className="mt-6 flex justify-end">
-                                        <div className="w-12 h-[1px] bg-emerald-500/20" />
-                                    </div>
+                                    {member.name !== "Dilshad Ashraf" && (
+                                        <div className="mt-6 flex justify-end">
+                                            <div className="w-12 h-[1px] bg-emerald-500/20" />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>
