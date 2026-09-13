@@ -261,7 +261,7 @@ export const LEADERSHIP = [
         name: "Dilshad Ashraf",
         desc: "Visionary leader driving enterprise-grade software intelligence and global operational strategy for ProHostix.",
         specialization: "Corporate Strategy",
-        avatar: "/working-professional.jpg"
+        avatar: "/dilshad-ashraf.jpg"
     },
     {
         role: "Vice President",

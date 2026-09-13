@@ -26,7 +26,7 @@ export default function CEOProfilePage() {
                 <div className="flex flex-col md:flex-row gap-12 items-start mb-20 border-b border-white/10 pb-16">
                     <div className="w-full md:w-1/3 aspect-square rounded-[32px] overflow-hidden relative shrink-0 border border-white/10 shadow-2xl">
                         <Image
-                            src="/working-professional.jpg"
+                            src="/dilshad-ashraf.jpg"
                             alt="Dilshad Ashraf - CEO of ProHostix"
                             fill
                             className="object-cover"
