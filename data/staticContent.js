@@ -257,9 +257,9 @@ export const SOLUTIONS = [
 
 export const LEADERSHIP = [
     {
-        role: "CEO ProHostix",
+        role: "Director & CEO, ProHostix LLP",
         name: "Dilshad Ashraf",
-        desc: "Visionary leader driving enterprise-grade software intelligence and global operational strategy for ProHostix.",
+        desc: "The Strategist Redrawing the Blueprint of Enterprise Software from India.",
         specialization: "Corporate Strategy",
         avatar: "/dilshad-ashraf.jpg"
     },

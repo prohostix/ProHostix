@@ -2,11 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Target, Lightbulb, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Target, Lightbulb, Zap, Server, Code, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Dilshad Ashraf - CEO | ProHostix',
-    description: 'Profile of Dilshad Ashraf, visionary tech entrepreneur and CEO of ProHostix LLP, revolutionising enterprise software and Education ERP systems.',
+    description: 'Profile of Dilshad Ashraf, Director & CEO of ProHostix LLP. The Strategist Redrawing the Blueprint of Enterprise Software from India.',
 };
 
 export default function CEOProfilePage() {
@@ -37,13 +37,13 @@ export default function CEOProfilePage() {
                     
                     <div className="flex flex-col justify-center pt-4">
                         <div className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4 w-max">
-                            Chief Executive Officer
+                            Director & CEO, ProHostix LLP
                         </div>
                         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none text-white">
                             Dilshad Ashraf
                         </h1>
                         <h2 className="text-xl md:text-2xl text-white/60 font-medium mb-6">
-                            The Visionary CEO Revolutionising Enterprise Software
+                            The Strategist Redrawing the Blueprint of Enterprise Software from India
                         </h2>
                         <div className="flex gap-4">
                             <a 
@@ -60,71 +60,97 @@ export default function CEOProfilePage() {
 
                 {/* Article Content */}
                 <article className="prose prose-invert prose-emerald max-w-none prose-lg md:prose-xl">
-                    <p className="lead text-2xl font-medium text-white/90 mb-10 leading-relaxed">
-                        Dilshad Ashraf is an exceptionally talented young Indian tech entrepreneur, software strategist, and the Chief Executive Officer (CEO) of ProHostix LLP. Driven by a lifelong ambition to leave a permanent mark on the global technology landscape, Ashraf is actively redefining the future of enterprise software through custom cloud architectures, cutting-edge SaaS platforms, and forward-thinking digital ecosystems.
-                    </p>
+                    <div className="mb-16">
+                        <h3 className="text-3xl font-black uppercase tracking-tight mb-6 flex items-center gap-4">
+                            <Target className="text-emerald-500 w-8 h-8" />
+                            The Vision: Systemise Everything
+                        </h3>
+                        <p className="text-white/70 leading-relaxed mb-6">
+                            From Calicut (Kozhikode), Kerala — a city with a growing reputation as a southern Indian tech hub — Dilshad Ashraf represents a new generation of Indian founders: not content to build tools, but determined to rebuild entire systems. While most entrepreneurs start with a product, Ashraf started with a thesis: every fragmented, paper-driven industry in India is a software problem waiting to be solved correctly.
+                        </p>
+                        <p className="text-white/70 leading-relaxed">
+                            That thesis became ProHostix LLP (LLPIN: ACZ-0055), the cloud software company he co-founded and leads as CEO and Designated Partner, alongside co-founder Abdul Aslam Munambath. From the company's base of operations in India, Ashraf has positioned ProHostix not as another development agency, but as an enterprise software strategy firm — one that designs the digital nervous systems organizations run on.
+                        </p>
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-16">
-                        <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-white/5">
-                            <Lightbulb className="w-8 h-8 text-emerald-500 mb-6" />
-                            <h3 className="text-xl font-bold uppercase tracking-tight mb-4 mt-0 text-white">A Lifelong Dream of Systemisation</h3>
-                            <p className="text-base text-white/60 leading-relaxed mb-0">
-                                Hailing from Calicut (Kozhikode), Kerala, Dilshad Ashraf's journey into technology began not just with an interest in code, but with a grand vision. From a young age, he was the kid who dreamed of systemising entire industries—looking at the world's fragmented, disorganized manual processes and believing they could be perfected through technology. Guided by an intense desire to make a tangible difference and build a name that lasts forever in the tech industry, he channeled his focus entirely into enterprise-grade problem-solving.
-                            </p>
-                        </div>
+                    <div className="mb-16 bg-[#0A0A0A] p-8 md:p-10 rounded-3xl border border-white/5">
+                        <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-6 text-white flex items-center gap-4">
+                            <Zap className="text-emerald-500 w-8 h-8" />
+                            The Disruptive Philosophy: Kill the Legacy Stack
+                        </h3>
+                        <p className="text-white/70 leading-relaxed mb-8">
+                            Ashraf's core conviction is blunt: the era of bloated, rigid legacy ERPs is ending. His philosophy rests on three pillars:
+                        </p>
+                        <ul className="space-y-6 list-none pl-0">
+                            <li className="flex gap-4 items-start">
+                                <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-1">
+                                    <Server className="w-4 h-4 text-emerald-500" />
+                                </div>
+                                <div>
+                                    <strong className="text-white block mb-1">Cloud-native by default, not by migration</strong>
+                                    <span className="text-white/60 text-base">Platforms architected for the cloud from line one, not legacy code repackaged into a browser.</span>
+                                </div>
+                            </li>
+                            <li className="flex gap-4 items-start">
+                                <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-1">
+                                    <Code className="w-4 h-4 text-emerald-500" />
+                                </div>
+                                <div>
+                                    <strong className="text-white block mb-1">One intelligent hub, not ten disconnected tools</strong>
+                                    <span className="text-white/60 text-base">Academic, administrative, financial, and communication workflows unified into a single source of truth.</span>
+                                </div>
+                            </li>
+                            <li className="flex gap-4 items-start">
+                                <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-1">
+                                    <Users className="w-4 h-4 text-emerald-500" />
+                                </div>
+                                <div>
+                                    <strong className="text-white block mb-1">Software that adapts to the institution — never the reverse</strong>
+                                    <span className="text-white/60 text-base">Configurable architecture that bends to an organization's real processes instead of forcing disruptive workarounds.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-white/5">
-                            <Target className="w-8 h-8 text-emerald-500 mb-6" />
-                            <h3 className="text-xl font-bold uppercase tracking-tight mb-4 mt-0 text-white">The Ultimate Education ERP</h3>
-                            <p className="text-base text-white/60 leading-relaxed mb-0">
-                                At the core of Ashraf’s leadership at ProHostix is his disruptive philosophy on how organizations should operate. Instead of relying on rigid legacy corporate tools, his premier focus is the revolutionisation of the education sector through an advanced Education Resource Management platform. This unique ERP is built to seamlessly unify complex academic architectures into a singular, intelligent, cloud-native hub.
-                            </p>
+                    <div className="mb-16">
+                        <h3 className="text-3xl font-black uppercase tracking-tight mb-6 flex items-center gap-4">
+                            <Lightbulb className="text-emerald-500 w-8 h-8" />
+                            The Flagship: A Next-Generation Education Resource Management Platform
+                        </h3>
+                        <p className="text-white/70 leading-relaxed mb-8">
+                            The centerpiece of Ashraf's roadmap is an advanced Education Resource Management (ERM) platform — his answer to one of the world's most under-digitized sectors. Where most school software stops at fee collection and attendance, Ashraf's platform is engineered to unify the entire academic architecture:
+                        </p>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                                <h4 className="text-lg font-bold text-white mb-2 mt-0">Unified academic lifecycle management</h4>
+                                <p className="text-sm text-white/60 m-0">Admissions, curriculum planning, assessment, and alumni relations on one continuous data layer.</p>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                                <h4 className="text-lg font-bold text-white mb-2 mt-0">Intelligent automation</h4>
+                                <p className="text-sm text-white/60 m-0">Routine administrative workloads shifted from staff to software, freeing educators to educate.</p>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                                <h4 className="text-lg font-bold text-white mb-2 mt-0">Data-driven decision intelligence</h4>
+                                <p className="text-sm text-white/60 m-0">Leadership dashboards that turn institutional data into strategy.</p>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                                <h4 className="text-lg font-bold text-white mb-2 mt-0">True cloud elasticity</h4>
+                                <p className="text-sm text-white/60 m-0">Built to scale from a single school to a multi-campus university network without re-architecture.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <h3 className="text-3xl font-black uppercase tracking-tight mb-8">Career Milestones & Trajectory</h3>
-                    <p className="text-white/70 mb-8">
-                        Ashraf’s path to becoming a chief executive is characterized by a rapid, multi-regional ascent through operations, system analysis, and project deployment:
-                    </p>
-
-                    <div className="space-y-6">
-                        <div className="flex gap-6 items-start">
-                            <div className="w-16 h-16 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex flex-col items-center justify-center shrink-0">
-                                <span className="text-[10px] font-bold text-emerald-500 uppercase">Present</span>
-                                <span className="text-xs font-black text-white">2026</span>
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold text-white m-0 mb-2">Executive Leadership, ProHostix</h4>
-                                <p className="text-base text-white/60 m-0">
-                                    Appointed as the Chief Executive Officer and Designated Partner of ProHostix. He spearheads the company’s product roadmaps, tech stacks, and aggressive growth strategies out of its primary corporate hub in Noida, Uttar Pradesh.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="flex gap-6 items-start">
-                            <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center shrink-0">
-                                <span className="text-[10px] font-bold text-white/40 uppercase">2024</span>
-                                <span className="text-xs font-black text-white/70">-26</span>
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold text-white m-0 mb-2">Project Delivery & Management, IRPS Pvt. Ltd.</h4>
-                                <p className="text-base text-white/60 m-0">
-                                    Served as a Project Manager in Calicut, Kerala. Over a highly active 16-month tenure, he rose swiftly through the management tiers, acting as both an R&D Team Manager and Team Lead Manager to direct complex software deployment cycles.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="flex gap-6 items-start">
-                            <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center shrink-0">
-                                <span className="text-[10px] font-bold text-white/40 uppercase">2023</span>
-                                <span className="text-xs font-black text-white/70">-24</span>
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold text-white m-0 mb-2">Systems & Data Analytics, Total Trust Air Conditioning</h4>
-                                <p className="text-base text-white/60 m-0">
-                                    Operated as a Business Analyst in Calicut, building the foundational expertise in operational workflows, data pipelines, and efficiency modeling that would later shape his ERP architectures.
-                                </p>
-                            </div>
+                    <div className="mb-16 border-t border-white/10 pt-16 relative">
+                        <h3 className="text-3xl font-black uppercase tracking-tight mb-6">Why He Matters</h3>
+                        <p className="text-white/70 leading-relaxed mb-12">
+                            Dilshad Ashraf belongs to the cohort of young Indian founders increasingly watched by the industry: builders who pair engineering discipline with a strategist's view of markets. His trajectory — from a system-thinker in Calicut to the CEO of a registered Indian LLP architecting sector-scale platforms — reads like the early chapters of the country's next great enterprise software story. The education sector is his proving ground; the ambition, by all accounts, is the global technology landscape.
+                        </p>
+                        
+                        <div className="text-center p-8 rounded-3xl bg-emerald-500/10 border border-emerald-500/20">
+                            <p className="text-xl md:text-2xl font-black uppercase tracking-widest text-emerald-400 m-0">
+                                The name to remember. <br className="md:hidden" /><span className="text-white">The system-builder to watch.</span>
+                            </p>
                         </div>
                     </div>
                 </article>
