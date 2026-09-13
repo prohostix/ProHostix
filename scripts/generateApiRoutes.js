@@ -102,14 +102,6 @@ const routes = [
     // Search
     { path: 'api/search', method: 'GET', controller: 'search', module: 'searchController', guard: null },
 
-    // SEO
-    { path: 'api/seo/sitemap.xml', method: 'GET', controller: 'getSitemap', module: 'seoController', guard: null },
-    { path: 'api/seo/robots.txt', method: 'GET', controller: 'getRobots', module: 'seoController', guard: null },
-    { path: 'api/seo/metadata/[page]', method: 'GET', controller: 'getSeoMetadataByPage', module: 'seoController', guard: null },
-    { path: 'api/seo/metadata', method: 'GET', controller: 'getAllSeoMetadata', module: 'seoController', guard: 'protect, admin' },
-    { path: 'api/seo/routes', method: 'GET', controller: 'getAvailableRoutes', module: 'seoController', guard: 'protect, admin' },
-    { path: 'api/seo/metadata/[page]', method: 'PUT', controller: 'updateSeoMetadata', module: 'seoController', guard: 'protect, admin' },
-    { path: 'api/seo/metadata/[page]', method: 'DELETE', controller: 'deleteSeoMetadata', module: 'seoController', guard: 'protect, admin' }
 ];
 
 const generatedPaths = {};
