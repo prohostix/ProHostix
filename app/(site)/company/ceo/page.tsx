@@ -10,8 +10,29 @@ export const metadata: Metadata = {
 };
 
 export default function CEOProfilePage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dilshad Ashraf",
+        "jobTitle": "Director & Chief Executive Officer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "ProHostix LLP"
+        },
+        "url": "https://prohostix.com/company/ceo",
+        "image": "https://prohostix.com/dilshad-ashraf.jpg",
+        "sameAs": [
+            "https://in.linkedin.com/company/prohostix"
+        ],
+        "description": "The Strategist Redrawing the Blueprint of Enterprise Software from India. Dilshad Ashraf is the CEO of ProHostix LLP, specializing in custom cloud architectures, cutting-edge SaaS platforms, and Education Resource Management (ERM) systems."
+    };
+
     return (
         <div className="min-h-screen bg-black text-white pt-32 pb-24 px-6 md:px-12 lg:px-16">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Back Link */}
                 <Link 
