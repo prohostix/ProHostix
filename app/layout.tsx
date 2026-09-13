@@ -75,10 +75,10 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
   },
   alternates: {
-    canonical: "https://www.prohostix.com",
+    canonical: "/",
     languages: {
-      'x-default': 'https://www.prohostix.com',
-      'en': 'https://www.prohostix.com',
+      'x-default': '/',
+      'en': '/',
     },
   },
   category: "technology",
