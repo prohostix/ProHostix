@@ -7,6 +7,27 @@ import { ArrowLeft, Target, Lightbulb, Zap, Server, Code, Users } from 'lucide-r
 export const metadata: Metadata = {
     title: 'Dilshad Ashraf - CEO | ProHostix',
     description: 'Profile of Dilshad Ashraf, Director & CEO of ProHostix LLP. The Strategist Redrawing the Blueprint of Enterprise Software from India.',
+    openGraph: {
+        title: 'Dilshad Ashraf - Director & CEO | ProHostix LLP',
+        description: 'The Strategist Redrawing the Blueprint of Enterprise Software from India.',
+        url: 'https://prohostix.com/company/ceo',
+        siteName: 'ProHostix',
+        images: [
+            {
+                url: 'https://prohostix.com/dilshad-ashraf.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Dilshad Ashraf - CEO of ProHostix LLP',
+            }
+        ],
+        type: 'profile',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Dilshad Ashraf - Director & CEO | ProHostix LLP',
+        description: 'The Strategist Redrawing the Blueprint of Enterprise Software from India.',
+        images: ['https://prohostix.com/dilshad-ashraf.jpg'],
+    }
 };
 
 export default function CEOProfilePage() {
