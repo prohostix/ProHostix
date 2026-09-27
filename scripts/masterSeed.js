@@ -566,7 +566,8 @@ const subscribers = [];
 const socialLinksData = [
     { platform: "X", url: "https://x.com/prohostix", icon: "X", order: 1 },
     { platform: "Instagram", url: "https://instagram.com/prohostix", icon: "Instagram", order: 2 },
-    { platform: "Facebook", url: "https://facebook.com/prohostix", icon: "Facebook", order: 3 }
+    { platform: "Facebook", url: "https://facebook.com/prohostix", icon: "Facebook", order: 3 },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/company/prohostix", icon: "Linkedin", order: 4 }
 ];
 
 const seoData = [
@@ -741,7 +742,40 @@ const seoData = [
     }
 ];
 
-const clients = [];
+const clients = [
+    {
+        name: "TechFlow Systems",
+        logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&q=80&fm=png&bg=transparent",
+        website: "https://example.com",
+        order: 1,
+        active: true,
+        description: "Enterprise SaaS platform scaling to 1M+ users."
+    },
+    {
+        name: "Nexus Health",
+        logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&q=80&fm=png&bg=transparent",
+        website: "https://example.com",
+        order: 2,
+        active: true,
+        description: "Secure telemedicine and patient management."
+    },
+    {
+        name: "Elevate Finance",
+        logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&q=80&fm=png&bg=transparent",
+        website: "https://example.com",
+        order: 3,
+        active: true,
+        description: "Real-time trading and portfolio analytics."
+    },
+    {
+        name: "Lumina Edu",
+        logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&q=80&fm=png&bg=transparent",
+        website: "https://example.com",
+        order: 4,
+        active: true,
+        description: "Modern learning management systems."
+    }
+];
 
 const seedData = async () => {
     try {

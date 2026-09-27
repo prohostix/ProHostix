@@ -43,7 +43,8 @@ export default function CEOProfilePage() {
         "url": "https://prohostix.com/company/ceo",
         "image": "https://prohostix.com/dilshad-ashraf.jpg",
         "sameAs": [
-            "https://in.linkedin.com/company/prohostix"
+            "https://www.linkedin.com/company/prohostix",
+            "https://www.instagram.com/dilshad_ph"
         ],
         "description": "The Strategist Redrawing the Blueprint of Enterprise Software from India. Dilshad Ashraf is the CEO of ProHostix LLP, specializing in custom cloud architectures, cutting-edge SaaS platforms, and Education Resource Management (ERM) systems."
     };
@@ -89,12 +90,20 @@ export default function CEOProfilePage() {
                         </h2>
                         <div className="flex gap-4">
                             <a 
-                                href="https://in.linkedin.com/company/prohostix" 
+                                href="https://www.linkedin.com/company/prohostix" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="text-sm px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 rounded-lg font-medium transition-colors"
                             >
                                 Connect on LinkedIn
+                            </a>
+                            <a 
+                                href="https://www.instagram.com/dilshad_ph" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-sm px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 rounded-lg font-medium transition-colors"
+                            >
+                                Follow on Instagram
                             </a>
                         </div>
                     </div>

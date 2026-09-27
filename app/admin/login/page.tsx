@@ -70,7 +70,6 @@ const AdminLogin = () => {
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-900/10 blur-[120px] rounded-full" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-900/5 blur-[120px] rounded-full" />
-                <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay" />
             </div>
 
             <motion.div
@@ -97,15 +96,6 @@ const AdminLogin = () => {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
 
                     <form onSubmit={handleSubmit} className="space-y-6 relative z-10" autoComplete="off">
-                        {/* 
-                          Honey-pot inputs to trick browser autofill. 
-                          Browsers usually target the first visible/enabled inputs. 
-                        */}
-                        <div className="absolute opacity-0 -z-50 pointer-events-none h-0 w-0 overflow-hidden">
-                            <input type="text" name="email_placeholder" tabIndex={-1} />
-                            <input type="password" name="password_placeholder" tabIndex={-1} />
-                        </div>
-
                         {/* Error Message */}
                         {error && (
                             <motion.div
@@ -125,13 +115,10 @@ const AdminLogin = () => {
                                 <Mail className="absolute left-4 top-3.5 w-5 h-5 text-emerald-500/80 group-focus-within/input:text-emerald-400 transition-colors z-10" />
                                 <input
                                     type="email"
-                                    name="user_email_identity"
+                                    name="email"
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    autoComplete="off"
-                                    onFocus={(e) => e.target.removeAttribute('readOnly')}
-                                    readOnly
                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all relative z-0 caret-emerald-500 dark-input"
                                     placeholder="Enter your email"
                                 />
@@ -147,13 +134,10 @@ const AdminLogin = () => {
                                 <Lock className="absolute left-4 top-3.5 w-5 h-5 text-emerald-500/80 group-focus-within/input:text-emerald-400 transition-colors z-10" />
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    name="user_secure_credential"
+                                    name="password"
                                     required
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    autoComplete="new-password"
-                                    onFocus={(e) => e.target.removeAttribute('readOnly')}
-                                    readOnly
                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-12 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all relative z-0 caret-emerald-500 dark-input"
                                     placeholder="Enter your password"
                                 />

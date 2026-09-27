@@ -152,7 +152,7 @@ export default function RootLayout({
         }
       ],
       "sameAs": [
-        "https://in.linkedin.com/company/prohostix"
+        "https://www.linkedin.com/company/prohostix"
       ]
     }
   };

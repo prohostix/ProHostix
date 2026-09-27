@@ -621,7 +621,8 @@ const Settings = () => {
                                     </div>
                                 </div>
 
-                                <div className="space-y-4">
+                                <form onSubmit={handlePasswordUpdate}>
+                                    <div className="space-y-4">
                                     <div>
                                         <label className="block text-sm font-medium text-white/60 mb-2">Current Password</label>
                                         <div className="relative">
@@ -685,7 +686,7 @@ const Settings = () => {
 
                                 <div className="pt-6 border-t border-white/10 flex justify-end">
                                     <button
-                                        onClick={handlePasswordUpdate}
+                                        type="submit"
                                         disabled={isLoading}
                                         className="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl transition-all border border-white/10 disabled:opacity-50 flex items-center gap-2"
                                     >
@@ -693,6 +694,7 @@ const Settings = () => {
                                         Update Password
                                     </button>
                                 </div>
+                                </form>
                             </div>
                         )
                     }
