@@ -346,36 +346,19 @@ const caseStudies = [
         title: "Pype CRM",
         slug: "pype-crm",
         category: "CRM & Automation",
-        description: "A comprehensive CRM solution designed for high-velocity sales teams, featuring automated pipelines and AI-driven insights.",
-        industry: "Technology",
-        problem: "Inefficient lead tracking and lack of actionable sales data.",
-        solution: "Developed a custom CRM with automated workflows, email integration, and real-time analytics dashboard.",
+        description: "An early-stage WhatsApp and call-based CRM tailored for education institutes, featuring automated pipelines and instant messaging.",
+        industry: "Education Technology",
+        problem: "Inefficient lead tracking and slow response times on WhatsApp.",
+        solution: "Developed a custom CRM with automated WhatsApp workflows, call integration, and real-time tracking.",
         techStack: ["React", "Node.js", "PostgreSQL", "Redis", "AWS"],
         stats: [
-            { label: "Sales Increase", value: "35%" },
-            { label: "Lead Response", value: "<5min" },
-            { label: "User Adoption", value: "98%" }
+            { label: "Institutes Onboarded", value: "225+" },
+            { label: "WhatsApp Reply Time", value: "<5min" },
+            { label: "User Adoption", value: "High" }
         ],
         image: "/project_dashboard_preview_1770603074238.jpg",
         projectUrl: "https://pypecrm.com",
         cta: "View Full Case Study"
-    },
-    {
-        title: "Client Success & Support",
-        slug: "client-support",
-        category: "Maintenance & Growth",
-        description: "Beyond development, we provide dedicated 24/7 technical support, security patching, and system optimizations to ensure long-term success.",
-        industry: "Enterprise Support",
-        problem: "Software degradation over time and the need for rapid incident response.",
-        solution: "We offer comprehensive SLA-based support packages including real-time monitoring, automated security updates, and continuous performance tuning.",
-        techStack: ["24/7 Monitoring", "Security Audits", "Performance Tuning", "Cloud Scaling", "Bug Fixes"],
-        stats: [
-            { label: "Avg Response", value: "<15min" },
-            { label: "Uptime Gtd.", value: "99.9%" },
-            { label: "Client Retention", value: "100%" }
-        ],
-        image: "/tech-cube.jpg",
-        cta: "View Support Plans"
     }
 ];
 

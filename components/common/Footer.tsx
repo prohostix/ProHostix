@@ -119,11 +119,14 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-6 items-center lg:items-start">
-                            <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] opacity-90 border-b border-emerald-500/20 pb-2 w-fit">Services</h4>
-                            <div className="flex flex-col gap-3">
-                                <Link href="/services" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">Core Services</Link>
-                                <Link href="/lets-talk" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-emerald-400 transition-colors text-sm hover:translate-x-1 duration-300 inline-block">Consultation</Link>
-                                <Link href="/lets-talk" onClick={() => window.scrollTo(0, 0)} className="text-white/40 hover:text-white transition-colors text-sm hover:translate-x-1 duration-300 inline-block">SLA Support</Link>
+                            <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] opacity-90 border-b border-emerald-500/20 pb-2 w-fit">Contact</h4>
+                            <div className="flex flex-col gap-3 text-sm text-white/40">
+                                <p className="mb-1">Kochi & Noida</p>
+                                <a href={`tel:${settings?.contactPhone || "+1 (555) 000-0000"}`} className="hover:text-emerald-400 transition-colors">{settings?.contactPhone || "+1 (555) 000-0000"}</a>
+                                <a href={`mailto:${settings?.contactEmail || "info@prohostix.com"}`} className="hover:text-emerald-400 transition-colors">{settings?.contactEmail || "info@prohostix.com"}</a>
+                                <Link href="/lets-talk" onClick={() => window.scrollTo(0, 0)} className="mt-2 inline-flex items-center justify-center px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-lg transition-colors text-xs uppercase tracking-wider">
+                                    Let's Talk
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -133,18 +136,12 @@ const Footer = () => {
                 <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
                         <p className="text-white/30 text-xs tracking-wide">
-                            © {new Date().getFullYear()} {settings?.companyName || "ProHostix"}. Global Presence.
+                            © {new Date().getFullYear()} {settings?.companyName || "ProHostix"}. All Rights Reserved.
                         </p>
                         <div className="hidden sm:block h-1 w-1 rounded-full bg-white/10" />
-                        <Link href="/privacy" onClick={() => window.scrollTo(0, 0)} className="text-white/30 hover:text-white transition-colors text-xs">Privacy Protocol</Link>
-                    </div>
-
-                    <div className="flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-xl group transition-all hover:border-emerald-500/30">
-                        <div className="relative">
-                            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-400 blur-[4px] animate-ping opacity-40" />
-                        </div>
-                        <span className="text-white/60 text-[11px] uppercase tracking-[0.2em] font-bold">System Status: 100% Active</span>
+                        <Link href="/privacy" onClick={() => window.scrollTo(0, 0)} className="text-white/30 hover:text-white transition-colors text-xs">Privacy Policy</Link>
+                        <div className="hidden sm:block h-1 w-1 rounded-full bg-white/10" />
+                        <Link href="/terms" onClick={() => window.scrollTo(0, 0)} className="text-white/30 hover:text-white transition-colors text-xs">Terms of Service</Link>
                     </div>
                 </div>
             </div>
