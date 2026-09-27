@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     },
 };
 
+import dbConnect from '@/lib/db';
+import ServiceModel from '@/lib/models/Service';
+
 /**
  * Services Page (Server Component)
  * Fetches data on the server for improved performance and SEO.
@@ -42,16 +45,20 @@ export default async function ServicesPage() {
     let services = SERVICES;
 
     try {
-        // Fetch dynamic services from backend
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/services`, { cache: 'no-store' });
-        if (res.ok) {
-            const dynamicServices = await res.json();
-            if (Array.isArray(dynamicServices) && dynamicServices.length > 0) {
-                services = dynamicServices;
-            }
+        await dbConnect();
+        const dynamicServices = await ServiceModel.find().lean();
+        if (Array.isArray(dynamicServices) && dynamicServices.length > 0) {
+            // Convert MongoDB _id and dates to string to pass to Client Component safely
+            services = dynamicServices.map((service: any) => {
+                const s = { ...service };
+                if (s._id) s._id = s._id.toString();
+                if (s.createdAt) s.createdAt = s.createdAt.toISOString();
+                if (s.updatedAt) s.updatedAt = s.updatedAt.toISOString();
+                return s;
+            });
         }
     } catch (error) {
-        console.error('Failed to fetch dynamic services on server:', error);
+        console.error('Failed to fetch dynamic services from DB:', error);
         // Fallback to static SERVICES is already handled by initial value
     }
 

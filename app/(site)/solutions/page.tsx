@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     },
 };
 
+import dbConnect from '@/lib/db';
+import SolutionModel from '@/lib/models/Solution';
+
 /**
  * Solutions Page (Server Component)
  * Fetches data on the server for improved performance and SEO.
@@ -42,16 +45,20 @@ export default async function SolutionsPage() {
     let solutions = SOLUTIONS;
 
     try {
-        // Fetch dynamic solutions from backend
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/solutions`, { cache: 'no-store' });
-        if (res.ok) {
-            const dynamicSolutions = await res.json();
-            if (Array.isArray(dynamicSolutions) && dynamicSolutions.length > 0) {
-                solutions = dynamicSolutions;
-            }
+        await dbConnect();
+        const dynamicSolutions = await SolutionModel.find().lean();
+        if (Array.isArray(dynamicSolutions) && dynamicSolutions.length > 0) {
+            // Convert MongoDB _id and dates to string safely for Client Components
+            solutions = dynamicSolutions.map((solution: any) => {
+                const s = { ...solution };
+                if (s._id) s._id = s._id.toString();
+                if (s.createdAt) s.createdAt = s.createdAt.toISOString();
+                if (s.updatedAt) s.updatedAt = s.updatedAt.toISOString();
+                return s;
+            });
         }
     } catch (error) {
-        console.error('Failed to fetch dynamic solutions on server:', error);
+        console.error('Failed to fetch dynamic solutions from DB:', error);
         // Fallback to static SOLUTIONS is already handled by initial value
     }
 

@@ -35,6 +35,9 @@ export const metadata: Metadata = {
 
 import { blogContent } from '@/config/blog/blogContent';
 
+import dbConnect from '@/lib/db';
+import BlogModel from '@/lib/models/Blog';
+
 /**
  * Blog Page (Server Component)
  * Fetches data on the server for improved performance and SEO.
@@ -43,13 +46,17 @@ export default async function BlogPage() {
     let blogs = [];
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blogs`, { cache: 'no-store' });
-        if (res.ok) {
-            const dynamicBlogs = await res.json();
-            if (Array.isArray(dynamicBlogs) && dynamicBlogs.length > 0) {
-                // Filter only published blogs for the public site
-                blogs = dynamicBlogs.filter((b: any) => b.published);
-            }
+        await dbConnect();
+        const dynamicBlogs = await BlogModel.find({ published: true }).lean();
+        if (Array.isArray(dynamicBlogs) && dynamicBlogs.length > 0) {
+            // Convert MongoDB _id and dates to string
+            blogs = dynamicBlogs.map((blog: any) => {
+                const b = { ...blog };
+                if (b._id) b._id = b._id.toString();
+                if (b.createdAt) b.createdAt = b.createdAt.toISOString();
+                if (b.updatedAt) b.updatedAt = b.updatedAt.toISOString();
+                return b;
+            });
         }
 
         // If still empty (no published blogs), fallback to static content
@@ -57,7 +64,7 @@ export default async function BlogPage() {
             blogs = blogContent.posts;
         }
     } catch (error) {
-        console.error('Failed to fetch blogs on server:', error);
+        console.error('Failed to fetch blogs from DB:', error);
         // Fallback to static content on error
         blogs = blogContent.posts;
     }
