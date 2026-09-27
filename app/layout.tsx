@@ -114,7 +114,7 @@ export default function RootLayout({
     "sameAs": [
       "https://x.com/prohostix",
       "https://instagram.com/prohostix",
-      "https://facebook.com/prohostix"
+      "https://www.facebook.com/people/ProHostix/61583716765510/"
     ],
     "areaServed": {
       "@type": "GeoShape",

@@ -420,7 +420,7 @@ export const SITE_SETTINGS = {
     socialLinks: {
         x: "https://x.com/prohostix",
         instagram: "https://instagram.com/prohostix",
-        facebook: "https://facebook.com/prohostix"
+        facebook: "https://www.facebook.com/people/ProHostix/61583716765510/"
     }
 };
 

@@ -34,7 +34,7 @@ const siteSettings = {
     socialLinks: {
         x: "https://x.com/prohostix",
         instagram: "https://instagram.com/prohostix",
-        facebook: "https://facebook.com/prohostix"
+        facebook: "https://www.facebook.com/people/ProHostix/61583716765510/"
     }
 };
 
@@ -566,7 +566,7 @@ const subscribers = [];
 const socialLinksData = [
     { platform: "X", url: "https://x.com/prohostix", icon: "X", order: 1 },
     { platform: "Instagram", url: "https://instagram.com/prohostix", icon: "Instagram", order: 2 },
-    { platform: "Facebook", url: "https://facebook.com/prohostix", icon: "Facebook", order: 3 },
+    { platform: "Facebook", url: "https://www.facebook.com/people/ProHostix/61583716765510/", icon: "Facebook", order: 3 },
     { platform: "LinkedIn", url: "https://www.linkedin.com/company/prohostix", icon: "Linkedin", order: 4 }
 ];
 
