@@ -2,29 +2,29 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, Server, Cpu, Globe } from 'lucide-react';
+import { Scale, FileText, CheckSquare, ShieldCheck, Globe } from 'lucide-react';
 
-const PrivacyClient = () => {
+const TermsClient = () => {
     const sections = [
         {
-            icon: Eye,
-            title: "Data Visibility",
-            content: "We provide absolute transparency into what data is collected. ProHostix operates on a 'Minimum Viable Data' principle, only capturing telemetry essential for system optimization and security."
+            icon: FileText,
+            title: "Service Usage",
+            content: "By accessing ProHostix services and applications, you agree to comply with our acceptable use policies. Our systems are designed for enterprise applications and must not be used for unauthorized or malicious activities."
         },
         {
-            icon: Lock,
-            title: "Encryption Layer",
-            content: "All data, whether at rest or in transit, is protected by AES-256 and TLS 1.3 protocols. Critical architectural schemas are further isolated within encrypted hardware security modules (HSMs)."
+            icon: CheckSquare,
+            title: "Client Obligations",
+            content: "Clients must ensure that the data they provide or process using our systems complies with all applicable local and international laws. ProHostix is not liable for data integrity breaches caused by user-side negligence."
         },
         {
-            icon: Server,
-            title: "Infrastructure Protocol",
-            content: "Your data is architected across distributed, high-availability clusters. We do not use third-party processing for mission-critical operations, maintaining a closed-loop engineering environment."
+            icon: ShieldCheck,
+            title: "Intellectual Property",
+            content: "All proprietary architecture, codebase, and methodologies developed by ProHostix remain our intellectual property unless explicitly transferred under a custom service level agreement."
         },
         {
-            icon: Cpu,
-            title: "System Integrity",
-            content: "We conduct bi-weekly security audits and automated vulnerability scans. Access to the core engine telemetry is restricted to senior architectural staff via hardware-based 2FA."
+            icon: Scale,
+            title: "Liability & Support",
+            content: "While we guarantee 99.9% uptime on our SLA tiers, ProHostix is not liable for indirect damages resulting from third-party API failures or cloud infrastructure outages beyond our control."
         }
     ];
 
@@ -40,7 +40,7 @@ const PrivacyClient = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8"
                     >
-                        <Shield size={12} /> Privacy & Security
+                        <Scale size={12} /> Legal Framework
                     </motion.div>
 
                     <motion.h1
@@ -49,7 +49,7 @@ const PrivacyClient = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8"
                     >
-                        Privacy <span className="text-emerald-500">Policy</span>
+                        Terms of <span className="text-emerald-500">Service</span>
                     </motion.h1>
 
                     <motion.p
@@ -58,7 +58,7 @@ const PrivacyClient = () => {
                         transition={{ delay: 0.2 }}
                         className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed"
                     >
-                        ProHostix is built on a foundation of absolute data integrity. This policy outlines our commitment to technical security and privacy excellence.
+                        These Terms of Service govern your use of ProHostix platforms and services. We value transparency, fairness, and mutual growth.
                     </motion.p>
                 </div>
             </div>
@@ -85,34 +85,34 @@ const PrivacyClient = () => {
                 </div>
             </div>
 
-            {/* --- DETAILED DATA POLICY --- */}
+            {/* --- DETAILED TERMS --- */}
             <div className="bg-[#050505] py-24 border-y border-white/5">
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="space-y-16">
                         <section>
                             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-emerald-500 mb-6 flex items-center gap-4">
-                                <div className="h-[1px] w-8 bg-emerald-500/30" /> 01. Collection
+                                <div className="h-[1px] w-8 bg-emerald-500/30" /> 01. Agreement Overview
                             </h2>
                             <div className="prose prose-invert max-w-none text-white/60 font-medium leading-loose space-y-4">
-                                <p>We collect system interaction data to improve the performance of our CRM and ERP architectures. This includes API response times, resource utilization metrics, and system-level event logs. We do not sell or trade your data to third-party advertising networks.</p>
+                                <p>This document constitutes a legally binding agreement between you and ProHostix. By accessing our services, engaging in software development contracts, or utilizing our APIs, you accept these terms in full.</p>
                             </div>
                         </section>
 
                         <section>
                             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-emerald-500 mb-6 flex items-center gap-4">
-                                <div className="h-[1px] w-8 bg-emerald-500/30" /> 02. Processing
+                                <div className="h-[1px] w-8 bg-emerald-500/30" /> 02. Service Modifications
                             </h2>
                             <div className="prose prose-invert max-w-none text-white/60 font-medium leading-loose space-y-4">
-                                <p>Processing is localized within geographically optimized data centers. We maintain strict data residency compliance, ensuring your operational data never leaves the authorized regional boundaries.</p>
+                                <p>ProHostix reserves the right to modify, suspend, or discontinue any service with 30 days prior notice to active clients. We continuously push updates to improve security and performance without disrupting existing SLAs.</p>
                             </div>
                         </section>
 
                         <section>
                             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-emerald-500 mb-6 flex items-center gap-4">
-                                <div className="h-[1px] w-8 bg-emerald-500/30" /> 03. Retention
+                                <div className="h-[1px] w-8 bg-emerald-500/30" /> 03. Governing Law
                             </h2>
                             <div className="prose prose-invert max-w-none text-white/60 font-medium leading-loose space-y-4">
-                                <p>Data is retained only as long as necessary for providing our services. Log data is automatically purged after 90 days unless required for active security investigations or legal compliance.</p>
+                                <p>These terms are governed by and construed in accordance with the laws of India. Any disputes relating to these terms and conditions will be subject to the exclusive jurisdiction of the courts of Kerala & Uttar Pradesh.</p>
                             </div>
                         </section>
                     </div>
@@ -124,11 +124,11 @@ const PrivacyClient = () => {
                 <div className="flex items-center justify-center gap-8 opacity-20 hover:opacity-100 transition-opacity">
                     <Globe size={16} />
                     <div className="h-4 w-[1px] bg-white" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">Last Updated: Q1 2026</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">Last Updated: Q3 2026</span>
                 </div>
             </div>
         </div>
     );
 };
 
-export default PrivacyClient;
+export default TermsClient;
