@@ -29,7 +29,7 @@ const siteSettings = {
     brandWordmarkPart2: "Hostix",
     logoLetter: "P",
     contactEmail: "info@prohostix.com",
-    contactPhone: "+91 98765 43210",
+    contactPhone: "+91 99586 69738",
     address: "A-18 Sector 59, Office No G-07, Jav Tower, Noida, Gautam Buddha Nagar, Noida, Uttar Pradesh, India, 201301",
     socialLinks: {
         x: "https://x.com/prohostix",
@@ -339,6 +339,74 @@ const caseStudies = [
         image: "/project_dashboard_preview_1770603074238.jpg",
         projectUrl: "https://pypecrm.com",
         cta: "View Full Case Study"
+    },
+    {
+        title: "Collabo",
+        slug: "collabo",
+        category: "Collaboration Platform",
+        description: "A secure, enterprise-grade collaboration and communication platform designed for distributed teams.",
+        industry: "Enterprise Software",
+        problem: "Fragmented communication across multiple unsecure channels.",
+        solution: "Engineered a unified workspace with real-time messaging, secure file sharing, and integrated video conferencing.",
+        techStack: ["React", "Node.js", "WebRTC", "MongoDB"],
+        stats: [
+            { label: "Real-time Sync", value: "<50ms" },
+            { label: "Security", value: "E2E Encrypted" }
+        ],
+        image: "/software-illustration.jpg",
+        projectUrl: "#",
+        cta: "Coming Soon"
+    },
+    {
+        title: "MOM System",
+        slug: "mom",
+        category: "Operations Management",
+        description: "A centralized Manufacturing Operations Management platform optimizing shop-floor productivity and resource allocation.",
+        industry: "Manufacturing",
+        problem: "Lack of real-time visibility into manufacturing processes and resource bottlenecks.",
+        solution: "Deployed an IoT-enabled operations management dashboard for predictive maintenance and workflow tracking.",
+        techStack: ["Vue.js", "Python", "TimescaleDB", "AWS IoT"],
+        stats: [
+            { label: "Downtime Reduction", value: "40%" },
+            { label: "Yield Increase", value: "15%" }
+        ],
+        image: "/machine-intel.png",
+        projectUrl: "#",
+        cta: "Coming Soon"
+    },
+    {
+        title: "LMS Platform",
+        slug: "lms",
+        category: "Learning Management",
+        description: "A scalable Learning Management System providing robust course delivery, analytics, and assessment tools.",
+        industry: "Education Technology",
+        problem: "Difficulty in tracking student progress and delivering interactive course content.",
+        solution: "Built a comprehensive LMS with advanced reporting, gamification, and seamless video streaming.",
+        techStack: ["Next.js", "NestJS", "PostgreSQL", "Redis"],
+        stats: [
+            { label: "Active Learners", value: "10k+" },
+            { label: "Course Completion", value: "Up 30%" }
+        ],
+        image: "/cognitive-design.png",
+        projectUrl: "#",
+        cta: "Coming Soon"
+    },
+    {
+        title: "UMS Portal",
+        slug: "ums",
+        category: "University Management",
+        description: "An end-to-end University Management System automating admissions, academics, examinations, and alumni relations.",
+        industry: "Higher Education",
+        problem: "Siloed departmental data leading to administrative delays and poor student experience.",
+        solution: "Delivered a unified portal connecting students, faculty, and administration through a single interface.",
+        techStack: ["React", "Django", "PostgreSQL", "Docker"],
+        stats: [
+            { label: "Process Automation", value: "85%" },
+            { label: "Data Accuracy", value: "99.9%" }
+        ],
+        image: "/architecture-viz.png",
+        projectUrl: "#",
+        cta: "Coming Soon"
     }
 ];
 
