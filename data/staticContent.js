@@ -274,6 +274,42 @@ export const LEADERSHIP = [
 
 export const CASE_STUDIES = [
     {
+        title: "PYPE ERM",
+        slug: "pype-erm",
+        category: "Enterprise Resource Management",
+        description: "Recognized as the best ERP software for education institutions in India, enabling comprehensive management of students, HR, payroll, finance, and collections.",
+        industry: "Education Technology",
+        problem: "Fragmented institutional data and inefficient manual processes across departments.",
+        solution: "Built a centralized ERP platform tailored for Indian educational institutions, unifying admissions, sales pipelines, attendance, and finance dashboards.",
+        techStack: ["React", "Node.js", "PostgreSQL", "AWS"],
+        stats: [
+            { label: "Data Centralization", value: "100%" },
+            { label: "Operational Efficiency", value: "High" },
+            { label: "Uptime", value: "99.9%" }
+        ],
+        image: "/software_solution_visual.jpg",
+        projectUrl: "https://pypeerm.com",
+        cta: "View Full Case Study"
+    },
+    {
+        title: "SkillDad",
+        slug: "skilldad",
+        category: "Digital Learning Platform",
+        description: "An advanced digital learning platform designed to deliver engaging, scalable, and effective online education experiences.",
+        industry: "EdTech & E-Learning",
+        problem: "Outdated and fragmented learning delivery methods limiting student engagement.",
+        solution: "Developed a modern, mobile-optimized learning management system focusing on seamless content delivery and interactive learning experiences.",
+        techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
+        stats: [
+            { label: "Mobile Optimization", value: "100%" },
+            { label: "User Engagement", value: "High" },
+            { label: "Scalability", value: "Global" }
+        ],
+        image: "/cognitive-design.png",
+        projectUrl: "https://skilldad.com",
+        cta: "View Full Case Study"
+    },
+    {
         title: "Pype CRM",
         slug: "pype-crm",
         category: "CRM & Automation",
