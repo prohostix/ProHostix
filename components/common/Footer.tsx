@@ -122,7 +122,7 @@ const Footer = () => {
                             <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] opacity-90 border-b border-emerald-500/20 pb-2 w-fit">Contact</h4>
                             <div className="flex flex-col gap-3 text-sm text-white/40">
                                 <p className="mb-1">Kochi & Noida</p>
-                                <a href={`tel:${settings?.contactPhone || "+1 (555) 000-0000"}`} className="hover:text-emerald-400 transition-colors">{settings?.contactPhone || "+1 (555) 000-0000"}</a>
+                                <a href={`tel:${settings?.contactPhone || "+91 98765 43210"}`} className="hover:text-emerald-400 transition-colors">{settings?.contactPhone || "+91 98765 43210"}</a>
                                 <a href={`mailto:${settings?.contactEmail || "info@prohostix.com"}`} className="hover:text-emerald-400 transition-colors">{settings?.contactEmail || "info@prohostix.com"}</a>
                                 <Link href="/lets-talk" onClick={() => window.scrollTo(0, 0)} className="mt-2 inline-flex items-center justify-center px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-lg transition-colors text-xs uppercase tracking-wider">
                                     Let's Talk

@@ -339,7 +339,7 @@ export const PAGE_CONTENT = {
             titlePart1: "READY TO BUILD THE",
             titlePart2: "NEXT",
             titlePart3: "LEVEL?",
-            description: "Our team is currently accepting high-priority projects for Q2 2026. Let's discuss how we can build your next system.",
+            description: "Our team is currently accepting high-priority projects. Let's discuss how we can build your next system.",
             primaryButtonText: "Contact Us",
             secondaryButtonText: "View Services"
         }
@@ -386,11 +386,11 @@ export const PAGE_CONTENT = {
         hero: {
             tagline: "TECHNICAL INSIGHTS",
             title: "Insights From the Architecture Layer",
-            subtitle: "Join 5,000+ architects receiving weekly insights on scaling, resilience, and AI integration."
+            subtitle: "Join our newsletter for weekly insights on scaling, resilience, and AI integration."
         },
         newsletter: {
             title: "Stay Ahead of Intelligent Systems",
-            description: "Join 5,000+ architects receiving weekly insights on scaling, resilience, and AI integration."
+            description: "Join our newsletter for weekly insights on scaling, resilience, and AI integration."
         }
     },
     careers: {
@@ -415,7 +415,7 @@ export const SITE_SETTINGS = {
     brandWordmarkPart2: "Hostix",
     logoLetter: "P",
     contactEmail: "info@prohostix.com",
-    contactPhone: "+1 (555) 000-0000",
+    contactPhone: "+91 98765 43210",
     address: "A-18 Sector 59, Office No G-07, Jav Tower, Noida, Gautam Buddha Nagar, Noida, Uttar Pradesh, India, 201301",
     socialLinks: {
         x: "https://x.com/prohostix",

@@ -29,7 +29,7 @@ const siteSettings = {
     brandWordmarkPart2: "Hostix",
     logoLetter: "P",
     contactEmail: "info@prohostix.com",
-    contactPhone: "+1 (555) 000-0000",
+    contactPhone: "+91 98765 43210",
     address: "A-18 Sector 59, Office No G-07, Jav Tower, Noida, Gautam Buddha Nagar, Noida, Uttar Pradesh, India, 201301",
     socialLinks: {
         x: "https://x.com/prohostix",
@@ -47,63 +47,7 @@ const navItems = [
     { label: "Blog", path: "/blog", icon: "BookOpenText", order: 6 }
 ];
 
-const blogs = [
-    {
-        title: "Scaling PostgreSQL to 1 Billion Rows",
-        excerpt: "Advanced indexing techniques and partitioning strategies for high-velocity transactional databases.",
-        readTime: "8 min read",
-        category: "Architecture",
-        slug: "scaling-postgresql-billion-rows",
-        image: "/architecture-viz.png",
-        content: "As systems scale towards a billion rows, standard indexing and query patterns begin to degrade. This deep dive explores the shift from monolithic database architectures to partitioned, horizontally scalable strategies.\n\nKey areas explored include:\n- Native Declarative Partitioning in PostgreSQL 12+.\n- BRIN Indexing for massive datasets where traditional B-Trees become too large for memory.\n- The role of Citus for distributed PostgreSQL workloads.\n\nWe provide benchmarks comparing sequential scans vs. partitioned lookups, demonstrating a 40x improvement in query latency for time-series data clusters.",
-        published: true,
-        author: "Alex V."
-    },
-    {
-        title: "The Death of Monoliths: Microservices Patterns",
-        excerpt: "When to split your services and how to manage the complexity of distributed transactions.",
-        readTime: "12 min read",
-        category: "Architecture",
-        slug: "monoliths-to-microservices",
-        image: "/web-arch.png",
-        content: "Microservices are often marketed as a silver bullet, but the transition from a monolith is fraught with architectural pitfalls. This article outlines the 'Strangler Fig' pattern for incremental migration and explores the trade-offs of runtime complexity.\n\nTopics include:\n- Service boundary discovery using Domain Driven Design (DDD).\n- Synchronous vs. Asynchronous communication (REST vs. gRPC vs. Message Brokers).\n- The Saga Pattern for managing distributed transactions without 2PC (Two Phase Commit).",
-        published: true,
-        author: "Alex V."
-    },
-    {
-        title: "AI in ERP: Beyond the Hype",
-        excerpt: "Practical applications of machine learning in resource planning, from demand forecasting to anomaly detection.",
-        readTime: "6 min read",
-        category: "ERP Systems",
-        slug: "ai-in-erp",
-        image: "/coding-blueprint.png",
-        content: "Enterprise Resource Planning (ERP) is being redefined by AI. We look past the generative AI hype to focus on predictive analytics that provide real-world ROI.\n\nArchitecture insights:\n- Integrating TensorFlow models directly into ERP middleware.\n- Real-time inventory optimization using Reinforcement Learning.\n- Automated fraud detection in financial sub-ledgers using Graph Neural Networks.",
-        published: true,
-        author: "Sarah J."
-    },
-    {
-        title: "Zero-Downtime Deployments with Kubernetes",
-        excerpt: "A deep dive into rolling updates, blue-green deployments, and canary releases in production.",
-        readTime: "10 min read",
-        category: "Cloud & DevOps",
-        slug: "kubernetes-deployments",
-        image: "/cloud-intel.png",
-        content: "Modern engineering requires that production systems never sleep. This technical guide breaks down the Kubernetes Deployment object and how to configure it for truly zero-downtime releases.\n\nAnalysis includes:\n- Readiness and Liveness probes: Tuning for stability.\n- Custom Resource Definitions (CRDs) for advanced traffic splitting.\n- Using Istio Service Mesh for fine-grained Canary releases with weight-based routing.",
-        published: true,
-        author: "Marcus T."
-    },
-    {
-        title: "Designing for Resilience: Circuit Breakers",
-        excerpt: "Implementing fault tolerance patterns to prevent cascading system failures.",
-        readTime: "7 min read",
-        category: "Product Engineering",
-        slug: "circuit-breakers-pattern",
-        image: "/cognitive-design.png",
-        content: "In a distributed system, failure is inevitable. The Circuit Breaker pattern is the primary defense against cascading failures. We examine the 'Open', 'Closed', and 'Half-Open' states of a circuit and how to implement them in high-concurrency environments.\n\nWe also compare libraries like Resilience4j and Hystrix, providing a Go implementation for a custom interceptor-based circuit breaker.",
-        published: true,
-        author: "Alex V."
-    }
-];
+const blogs = [];
 
 const services = [
     {
@@ -443,7 +387,7 @@ const pageContents = [
             titlePart1: "READY TO BUILD THE",
             titlePart2: "NEXT",
             titlePart3: "LEVEL?",
-            description: "Our team is currently accepting high-priority projects for Q2 2026. Let's see if your vision aligns with our architecture.",
+            description: "Our team is currently accepting high-priority projects. Let's see if your vision aligns with our architecture.",
             primaryButtonText: "Initialize Contact",
             secondaryButtonText: "View Schema"
         }
@@ -497,7 +441,7 @@ const pageContents = [
         content: {
             tagline: "TECHNICAL INSIGHTS",
             title: "Insights From the Architecture Layer",
-            subtitle: "Join 5,000+ architects receiving weekly insights on scaling, resilience, and AI integration."
+            subtitle: "Join our newsletter for weekly insights on scaling, resilience, and AI integration."
         }
     },
     {
