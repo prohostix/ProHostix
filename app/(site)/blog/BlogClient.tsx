@@ -76,7 +76,6 @@ export default function BlogClient({ initialBlogs }: BlogClientProps) {
                         src="/hero-ai.jpg"
                         alt="Engineering Journal Insights"
                         className="w-full h-full object-cover opacity-20 brightness-75 grayscale-[0.2]"
-                        priority={true}
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10" />

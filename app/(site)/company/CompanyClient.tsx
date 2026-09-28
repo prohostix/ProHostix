@@ -46,7 +46,6 @@ export default function CompanyClient() {
                     <SmartImage
                         src="/working-professional.jpg"
                         alt="Company Architectural Core"
-                        priority={true}
                         className="w-full h-full object-cover opacity-20 brightness-75 grayscale-[0.2]"
                     />
                     {/* Visual Fading & Ambient Depth */}

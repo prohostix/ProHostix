@@ -53,7 +53,6 @@ export default function ServicesClient({ services }: ServicesClientProps) {
                     src="/hero-ai.jpg"
                     alt="Services Engineering Vector"
                     className="w-full h-full object-cover opacity-30 brightness-75 grayscale-[0.2]"
-                    priority={true}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10" />
                 <div className="absolute top-0 left-0 right-0 h-full bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />

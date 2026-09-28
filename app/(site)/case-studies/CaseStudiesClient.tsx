@@ -19,7 +19,6 @@ export default function CaseStudiesClient() {
                     src="/hero-ai.jpg"
                     alt="Case Studies Architecture"
                     className="w-full h-full object-cover opacity-30 brightness-50 grayscale-[0.3]"
-                    priority={true}
                 />
                 {/* Visual Fading & Ambient Depth */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10" />

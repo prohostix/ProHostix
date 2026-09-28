@@ -52,7 +52,6 @@ export default function SolutionsClient({ solutions }: SolutionsClientProps) {
                 <SmartImage
                     src="/hero-ai.jpg"
                     alt="Solutions Hero Vector"
-                    priority={true}
                     className="w-full h-full object-cover opacity-40 brightness-75 grayscale-[0.5]"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-b from-transparent via-black/20 to-black z-10" />
