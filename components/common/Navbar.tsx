@@ -34,17 +34,7 @@ export const Navbar = memo(({ isLight = false }: { isLight?: boolean }) => {
     const { data: apiNavItems } = useNavigationQuery();
     const navItems = apiNavItems?.length ? apiNavItems : NAVIGATION;
 
-    const containerClasses = useMemo(
-        () =>
-            [
-                "flex flex-row items-center gap-1 p-1 rounded-lg border",
-                "safari-blur-fix force-gpu shadow-2xl transition-all duration-300",
-                isLight
-                    ? "bg-white/90 border-slate-200/60 shadow-slate-200/50"
-                    : "bg-black/60 border-white/10",
-            ].join(" "),
-        [isLight]
-    );
+    const containerClasses = "flex flex-row items-center gap-8 xl:gap-10";
 
     return (
         <nav
@@ -53,40 +43,31 @@ export const Navbar = memo(({ isLight = false }: { isLight?: boolean }) => {
             aria-label="Primary navigation"
         >
             <ul className={containerClasses}>
-                {navItems.map(({ label, path, icon }: any) => {
-                    const Icon = ICONS[icon] ?? LayoutGrid;
+                {navItems.map(({ label, path }: any) => {
                     const isActive = pathname === path;
 
                     return (
                         <li key={label}>
                             <Link
                                 href={path}
+                                aria-current={isActive ? "page" : undefined}
                                 className={[
-                                    "group flex h-10 items-center gap-2 px-3 rounded-md text-sm font-medium",
-                                    "transition-all duration-300 focus:outline-none",
+                                    "relative flex h-10 items-center text-base font-medium",
+                                    "transition-colors duration-300 focus:outline-none",
                                     isActive
-                                        ? isLight
-                                            ? "bg-slate-100/80 text-emerald-700 shadow-sm"
-                                            : "bg-white/10 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
+                                        ? "text-emerald-400"
                                         : isLight
-                                            ? "text-slate-500 hover:text-slate-900 hover:bg-slate-100/50"
-                                            : "text-gray-400 hover:text-white hover:bg-white/5",
+                                            ? "text-slate-700 hover:text-slate-900"
+                                            : "text-white hover:text-emerald-300",
                                 ].join(" ")}
                             >
-                                <Icon
-                                    size={16}
-                                    aria-hidden
-                                    className={[
-                                        "transition-all duration-300",
-                                        isActive
-                                            ? "opacity-100 w-4"
-                                            : "opacity-0 w-0 group-hover:opacity-100 group-hover:w-4",
-                                        isLight && isActive
-                                            ? "text-emerald-600"
-                                            : "text-emerald-400",
-                                    ].join(" ")}
-                                />
                                 <span>{label}</span>
+                                {isActive && (
+                                    <span
+                                        aria-hidden
+                                        className="absolute left-1/2 -translate-x-1/2 bottom-0 h-[2px] w-6 rounded-full bg-emerald-400"
+                                    />
+                                )}
                             </Link>
                         </li>
                     );

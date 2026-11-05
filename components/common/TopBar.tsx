@@ -136,7 +136,6 @@ const TopBar = memo(() => {
                         >
                             <span className={isTitleAnimating ? 'animate-pro-move' : ''}>{settings?.brandWordmarkPart1 || "Pro"}</span>
                             <span className={isTitleAnimating ? 'animate-hostix-move' : ''}>{settings?.brandWordmarkPart2 || "Hostix"}</span>
-                            <span className="w-3 h-3 bg-emerald-500 ml-2 mb-1 animate-cursor" />
                         </div>
                     </Link>
                 </div>
@@ -213,7 +212,7 @@ const TopBar = memo(() => {
                             {!isSearchExpanded && (
                                 <button
                                     onClick={() => dispatch(setSearchExpanded(true))}
-                                    className={`p-2 rounded-full transition-all duration-300 flex items-center justify-center ${isLight ? 'text-slate-500 hover:text-emerald-600 hover:bg-slate-100' : 'text-gray-400 hover:text-emerald-400 hover:bg-white/5'}`}
+                                    className={`p-2 rounded-full transition-all duration-300 flex items-center justify-center ${isLight ? 'text-slate-500 hover:text-emerald-600 hover:bg-slate-100' : 'text-white/90 hover:text-emerald-400 hover:bg-white/5'}`}
                                     aria-label="Open search"
                                 >
                                     <Search size={18} />
@@ -223,22 +222,17 @@ const TopBar = memo(() => {
 
                         {/* Login Button - Always Visible */}
                         <Link href="/admin/login" className={`
-                        h-11 px-5 font-medium 
-                        backdrop-blur-xl border rounded-lg 
-                        transition-all duration-300 ease-out
-                        hover:scale-[1.01] 
-                        active:scale-95 shrink-0 flex items-center justify-center
-                        ${isLight
-                                ? 'bg-white/90 border-slate-200 text-slate-700 hover:bg-white hover:border-emerald-500/30'
-                                : 'text-white/70 bg-[#1a1a1a]/80 border-white/10 hover:bg-white/10 hover:border-emerald-500/30 hover:text-white active:bg-[#1a1a1a]/80'}
+                        h-11 px-3 font-medium shrink-0 flex items-center justify-center
+                        transition-colors duration-300
+                        ${isLight ? 'text-slate-700 hover:text-slate-900' : 'text-white/90 hover:text-white'}
                     `}
-                            style={{ fontSize: '14px' }}>
+                            style={{ fontSize: '16px' }}>
                             Login
                         </Link>
 
                         {/* Contact Us Button - Visible only on larger screens to save space */}
                         <Link href="/lets-talk" className={`
-                        h-11 px-4 xl:px-8 rounded-xl font-semibold 
+                        h-12 px-4 xl:px-7 rounded-full font-semibold 
                         hidden lg:flex items-center justify-center
                         bg-emerald-500 text-black hover:bg-emerald-400 
                         transition-all font-outfit whitespace-nowrap shrink-0
