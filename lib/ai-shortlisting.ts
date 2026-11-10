@@ -361,3 +361,4 @@ Return ONLY a valid JSON object matching this exact TypeScript interface (no mar
 
     return parseResumeHeuristically(text, fileName, job);
 }
+

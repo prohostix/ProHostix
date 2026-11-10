@@ -60,3 +60,4 @@ export async function ensureDefaultJobs() {
         console.log('Seeded default ProHostix job requisitions.');
     }
 }
+
