@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Briefcase, Zap, Search, Trash2, Eye, RefreshCcw, FileText, Sparkles } from 'lucide-react';
+import { Mail, Briefcase, Zap, Search, Trash2, Eye, RefreshCcw, FileText, Sparkles, ExternalLink } from 'lucide-react';
 import { countries } from '@/config/countries';
 import ProjectDetailsModal from './ProjectDetailsModal';
 import JobApplicationModal from './JobApplicationModal';
@@ -300,6 +301,14 @@ const Enquiries: React.FC<EnquiriesProps> = ({ initialTab, searchQuery = '' }) =
                                                 </td>
                                                 <td className="px-5 py-3 align-middle">
                                                     <div className="flex justify-end items-center gap-1.5 opacity-40 group-hover:opacity-100 transition-opacity">
+                                                        <Link
+                                                            href={`/admin/careers/${item._id}`}
+                                                            className="p-1.5 rounded-lg text-emerald-400 hover:text-white hover:bg-emerald-500/20 transition-colors"
+                                                            title="Open Application Specific Page"
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            <ExternalLink size={15} />
+                                                        </Link>
                                                         <a
                                                             href={`/api/enquiries/careers/${item._id}/resume`}
                                                             target="_blank"
@@ -361,17 +370,19 @@ const Enquiries: React.FC<EnquiriesProps> = ({ initialTab, searchQuery = '' }) =
             )}
 
             {/* Modal */}
-            {activeTab === 'careers' ? (
-                <JobApplicationModal
-                    application={selectedEnquiry}
-                    onClose={() => setSelectedEnquiry(null)}
-                    onRefresh={refetch}
-                />
-            ) : (
-                <ProjectDetailsModal
-                    enquiry={selectedEnquiry}
-                    onClose={() => setSelectedEnquiry(null)}
-                />
+            {selectedEnquiry && (
+                activeTab === 'careers' ? (
+                    <JobApplicationModal
+                        application={selectedEnquiry}
+                        onClose={() => setSelectedEnquiry(null)}
+                        onRefresh={refetch}
+                    />
+                ) : (
+                    <ProjectDetailsModal
+                        enquiry={selectedEnquiry}
+                        onClose={() => setSelectedEnquiry(null)}
+                    />
+                )
             )}
 
             <ConfirmationModal

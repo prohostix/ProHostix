@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { X, User, Mail, Phone, Briefcase, FileText, CheckCircle2, Download, ExternalLink, Eye, EyeOff, Sparkles, AlertCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -16,10 +17,19 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
     const [evaluating, setEvaluating] = useState(false);
     const [currentApp, setCurrentApp] = useState(application);
 
-    if (!currentApp) return null;
+    useEffect(() => {
+        if (application) {
+            setCurrentApp(application);
+            setShowPreview(false);
+        }
+    }, [application]);
 
-    const resumeViewUrl = `/api/enquiries/careers/${currentApp._id}/resume`;
-    const resumeDownloadUrl = `/api/enquiries/careers/${currentApp._id}/resume?download=1`;
+    const activeApp = currentApp || application;
+    if (!activeApp) return null;
+
+    const resumeViewUrl = `/api/enquiries/careers/${activeApp._id}/resume`;
+    const resumeDownloadUrl = `/api/enquiries/careers/${activeApp._id}/resume?download=1`;
+    const dedicatedPageUrl = `/admin/careers/${activeApp._id}`;
 
     const handleRunAIEvaluation = async () => {
         try {
@@ -27,13 +37,13 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
             const res = await fetch('/api/candidates/evaluate-application', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ applicationId: currentApp._id })
+                body: JSON.stringify({ applicationId: activeApp._id })
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Failed to run AI evaluation');
             toast.success(`AI Evaluation complete! Fit Score: ${data.aiScore}%`);
             setCurrentApp((prev: any) => ({
-                ...prev,
+                ...(prev || activeApp),
                 aiScore: data.aiScore,
                 aiStatus: data.aiStatus,
                 aiEvaluation: data.evaluation
@@ -47,11 +57,11 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
     };
 
     const details = [
-        { label: 'Full Name', value: currentApp.name, icon: User, fullWidth: true },
-        { label: 'Email', value: currentApp.email, icon: Mail, fullWidth: true },
-        { label: 'Role Applied For', value: currentApp.role, icon: Briefcase, fullWidth: true },
-        { label: 'Phone Number', value: `${currentApp.countryCode || ''} ${currentApp.phoneNumber || 'N/A'}`.trim(), icon: Phone },
-        { label: 'Location', value: currentApp.country || 'N/A', icon: CheckCircle2 },
+        { label: 'Full Name', value: activeApp.name, icon: User, fullWidth: true },
+        { label: 'Email', value: activeApp.email, icon: Mail, fullWidth: true },
+        { label: 'Role Applied For', value: activeApp.role, icon: Briefcase, fullWidth: true },
+        { label: 'Phone Number', value: `${activeApp.countryCode || ''} ${activeApp.phoneNumber || 'N/A'}`.trim(), icon: Phone },
+        { label: 'Location', value: activeApp.country || 'N/A', icon: CheckCircle2 },
     ];
 
     return (
@@ -80,16 +90,28 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
                             <div>
                                 <h3 className="font-bold text-lg text-white">Job Application Details</h3>
                                 <p className="text-xs text-white/40 uppercase tracking-widest">
-                                    Received on {new Date(currentApp.createdAt).toLocaleDateString()}
+                                    Received on {new Date(activeApp.createdAt).toLocaleDateString()}
                                 </p>
                             </div>
                         </div>
-                        <button
-                            onClick={onClose}
-                            className="p-2 hover:bg-white/5 rounded-lg text-white/40 hover:text-white transition-all"
-                        >
-                            <X size={20} />
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <Link
+                                href={dedicatedPageUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 text-xs font-semibold flex items-center gap-1.5 transition-all"
+                                title="Open in Dedicated Application Page"
+                            >
+                                <ExternalLink size={13} />
+                                <span>Dedicated Page</span>
+                            </Link>
+                            <button
+                                onClick={onClose}
+                                className="p-2 hover:bg-white/5 rounded-lg text-white/40 hover:text-white transition-all"
+                            >
+                                <X size={20} />
+                            </button>
+                        </div>
                     </div>
 
                     {/* Content */}
@@ -117,7 +139,7 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
                                     Candidate Resume / CV
                                 </label>
                                 <span className="text-xs text-zinc-400 font-mono">
-                                    {currentApp.resumeOriginalName || 'Resume.pdf'}
+                                    {activeApp.resumeOriginalName || 'Resume.pdf'}
                                 </span>
                             </div>
 
@@ -180,36 +202,36 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
                                     className="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 transition-all disabled:opacity-50"
                                 >
                                     <Sparkles size={13} className={evaluating ? 'animate-spin' : ''} />
-                                    {evaluating ? 'Evaluating...' : (currentApp.aiScore ? 'Re-Evaluate with AI' : 'Run AI Evaluation')}
+                                    {evaluating ? 'Evaluating...' : (activeApp.aiScore ? 'Re-Evaluate with AI' : 'Run AI Evaluation')}
                                 </button>
                             </div>
 
-                            {currentApp.aiScore ? (
+                            {activeApp.aiScore ? (
                                 <div className="p-4 rounded-xl bg-zinc-800/50 border border-white/10 space-y-3">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <span className="text-2xl font-black text-white">{currentApp.aiScore}%</span>
+                                            <span className="text-2xl font-black text-white">{activeApp.aiScore}%</span>
                                             <span className="text-xs text-zinc-400">Match Fit</span>
                                         </div>
                                         <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                                            currentApp.aiStatus === 'SHORTLISTED'
+                                            activeApp.aiStatus === 'SHORTLISTED'
                                                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                                                : currentApp.aiStatus === 'REVIEW'
+                                                : activeApp.aiStatus === 'REVIEW'
                                                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
                                                 : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
                                         }`}>
-                                            {currentApp.aiStatus || 'REVIEW'}
+                                            {activeApp.aiStatus || 'REVIEW'}
                                         </span>
                                     </div>
-                                    {currentApp.aiEvaluation?.aiSummary && (
+                                    {activeApp.aiEvaluation?.aiSummary && (
                                         <p className="text-xs text-zinc-300 leading-relaxed italic">
-                                            "{currentApp.aiEvaluation.aiSummary}"
+                                            "{activeApp.aiEvaluation.aiSummary}"
                                         </p>
                                     )}
                                 </div>
                             ) : (
                                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-zinc-400 flex items-center justify-between">
-                                    <span>Not evaluated by AI yet. Click "Run AI Evaluation" to screen fit against "{currentApp.role}".</span>
+                                    <span>Not evaluated by AI yet. Click "Run AI Evaluation" to screen fit against "{activeApp.role}".</span>
                                 </div>
                             )}
                         </div>
@@ -221,13 +243,13 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
                                 Candidate Message
                             </label>
                             <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4 text-sm text-white/70 leading-relaxed italic">
-                                "{currentApp.message || 'No message provided.'}"
+                                "{activeApp.message || 'No message provided.'}"
                             </div>
                         </div>
 
                         {/* Status Footer */}
                         <div className="flex items-center justify-between pt-4 border-t border-white/5 text-[10px] text-white/30">
-                            <span>Application ID: {currentApp._id}</span>
+                            <span>Application ID: {activeApp._id}</span>
                             <span>Stored in MongoDB Atlas</span>
                         </div>
                     </div>
@@ -241,7 +263,7 @@ const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ application, 
                             Close
                         </button>
                         <a
-                            href={`mailto:${currentApp.email}`}
+                            href={`mailto:${activeApp.email}`}
                             className="px-6 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
                         >
                             <Mail size={16} />
