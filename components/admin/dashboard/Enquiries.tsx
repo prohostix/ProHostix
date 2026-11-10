@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Briefcase, Zap, Search, Trash2, Eye, RefreshCcw } from 'lucide-react';
+import { Mail, Briefcase, Zap, Search, Trash2, Eye, RefreshCcw, FileText, Sparkles } from 'lucide-react';
 import { countries } from '@/config/countries';
 import ProjectDetailsModal from './ProjectDetailsModal';
 import JobApplicationModal from './JobApplicationModal';
@@ -299,16 +299,28 @@ const Enquiries: React.FC<EnquiriesProps> = ({ initialTab, searchQuery = '' }) =
                                                     <span className="text-xs text-zinc-500 font-medium">{item.createdAt ? new Date(item.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : '—'}</span>
                                                 </td>
                                                 <td className="px-5 py-3 align-middle">
-                                                    <div className="flex justify-end gap-1 opacity-30 group-hover:opacity-100 transition-opacity">
+                                                    <div className="flex justify-end items-center gap-1.5 opacity-40 group-hover:opacity-100 transition-opacity">
+                                                        <a
+                                                            href={`/api/enquiries/careers/${item._id}/resume`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="p-1.5 rounded-lg text-blue-400 hover:text-white hover:bg-blue-500/20 transition-colors"
+                                                            title="View Candidate CV"
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            <FileText size={15} />
+                                                        </a>
                                                         <button
                                                             onClick={() => setSelectedEnquiry(item)}
                                                             className="p-1.5 rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-colors"
+                                                            title="View Details"
                                                         >
                                                             <Eye size={15} />
                                                         </button>
                                                         <button
                                                             onClick={() => requestDelete(item._id)}
                                                             className="p-1.5 rounded-lg text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                                                            title="Delete Record"
                                                         >
                                                             <Trash2 size={15} />
                                                         </button>
@@ -353,6 +365,7 @@ const Enquiries: React.FC<EnquiriesProps> = ({ initialTab, searchQuery = '' }) =
                 <JobApplicationModal
                     application={selectedEnquiry}
                     onClose={() => setSelectedEnquiry(null)}
+                    onRefresh={refetch}
                 />
             ) : (
                 <ProjectDetailsModal

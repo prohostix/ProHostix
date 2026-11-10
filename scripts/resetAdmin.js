@@ -12,7 +12,7 @@ const resetPassword = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
         const email = 'admin@prohostix.com';
-        const newPassword = 'adminPassword123';
+        const newPassword = 'cadminPassword123';
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword, salt);
@@ -29,6 +29,23 @@ const resetPassword = async () => {
         } else {
             console.log(`User ${email} not found`);
         }
+
+        const recruiterEmail = 'careers@prohostix.com';
+        const recruiterPassword = 'ProxGM@12';
+        const recruiterSalt = await bcrypt.genSalt(10);
+        const hashedRecruiterPassword = await bcrypt.hash(recruiterPassword, recruiterSalt);
+
+        await User.findOneAndUpdate(
+            { email: recruiterEmail },
+            {
+                name: 'Prohostix Talent Team',
+                email: recruiterEmail,
+                password: hashedRecruiterPassword,
+                role: 'Administrator'
+            },
+            { upsert: true, returnDocument: 'after' }
+        );
+        console.log(`Recruiter user ensured: ${recruiterEmail}`);
 
         process.exit(0);
     } catch (error) {

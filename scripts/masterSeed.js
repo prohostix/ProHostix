@@ -840,8 +840,11 @@ const seedData = async () => {
         await HeroImage.deleteMany({});
         await Navigation.deleteMany({});
         await Settings.deleteMany({});
-        await Enquiry.deleteMany({});
-        await JobApplication.deleteMany({});
+        // Preserve real job applications and enquiries if they exist
+        const existingJobApps = await JobApplication.countDocuments();
+        if (existingJobApps === 0 && jobApplications.length > 0) {
+            if (jobApplications.length > 0) await JobApplication.insertMany(jobApplications);
+        }
         await Subscriber.deleteMany({});
         await SocialLink.deleteMany({});
         await SeoMetadata.deleteMany({});
@@ -864,6 +867,24 @@ const seedData = async () => {
             { upsert: true, new: true }
         );
         console.log('Admin user ensured.');
+
+        // Recruiter User (Upsert)
+        const recruiterEmail = "careers@prohostix.com";
+        const recruiterPassword = "ProxGM@12";
+        const recruiterSalt = await bcrypt.genSalt(10);
+        const hashedRecruiterPassword = await bcrypt.hash(recruiterPassword, recruiterSalt);
+
+        await User.findOneAndUpdate(
+            { email: recruiterEmail },
+            {
+                name: "Prohostix Talent Team",
+                email: recruiterEmail,
+                password: hashedRecruiterPassword,
+                role: "Administrator"
+            },
+            { upsert: true, new: true }
+        );
+        console.log('Recruiter user (careers@prohostix.com) ensured.');
 
         // Settings (Upsert)
         await Settings.findOneAndUpdate({}, siteSettings, { upsert: true });
@@ -906,7 +927,7 @@ const seedData = async () => {
         await PageContent.insertMany(pageContents);
         await Navigation.insertMany(navItems);
         await Enquiry.insertMany(enquiries);
-        await JobApplication.insertMany(jobApplications);
+        if (jobApplications.length > 0) await JobApplication.insertMany(jobApplications);
         await Subscriber.insertMany(subscribers);
         await SeoMetadata.insertMany(seoData);
         await Client.insertMany(clients);

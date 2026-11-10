@@ -26,13 +26,15 @@ import {
     Zap,
     Target,
     Globe,
-    Building2
+    Building2,
+    Sparkles
 } from 'lucide-react';
 
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import Overview from '@/components/admin/dashboard/Overview';
 import Blogs from '@/components/admin/dashboard/Blogs';
 import Enquiries from '@/components/admin/dashboard/Enquiries';
+import Shortlisting from '@/components/admin/dashboard/Shortlisting';
 import Services from '@/components/admin/dashboard/Services';
 import Solutions from '@/components/admin/dashboard/Solutions';
 import Team from '@/components/admin/dashboard/Team';
@@ -155,11 +157,12 @@ function DashboardContent() {
 
     const menuItems = [
         { id: 'overview', label: 'Overview', icon: LayoutDashboard },
+        { id: 'shortlisting', label: 'AI Shortlisting', icon: Sparkles },
+        { id: 'enquiries', label: 'Leads & Careers', icon: MessageSquare },
         { id: 'services', label: 'Services', icon: Briefcase },
         { id: 'solutions', label: 'Solutions', icon: Puzzle },
         { id: 'blogs', label: 'Blogs', icon: FileText },
         { id: 'clients', label: 'Top Clients', icon: Building2 },
-        { id: 'enquiries', label: 'Leads', icon: MessageSquare },
         { id: 'leadership', label: 'Board Members', icon: UserCircle },
         { id: 'seo', label: 'SEO Config', icon: Globe },
         { id: 'settings', label: 'General Settings', icon: SettingsIcon },
@@ -188,6 +191,7 @@ function DashboardContent() {
                     user={user}
                 />
             );
+            case 'shortlisting': return <Shortlisting />;
             case 'blogs': return <Blogs />;
             case 'services': return <Services />;
             case 'solutions': return <Solutions />;
