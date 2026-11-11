@@ -92,7 +92,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
     let latestBlogs = [];
 
-    try {
+    if (process.env.MONGO_URI) try {
         // Fetch only published blogs, limit to 3 for the home page insights section
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
         const res = await fetch(`${apiUrl}/blogs`, { next: { revalidate: 3600 } });
@@ -105,8 +105,8 @@ export default async function HomePage() {
                     .slice(0, 3);
             }
         }
-    } catch (error) {
-        console.error('Failed to fetch home page blogs:', error);
+    } catch {
+        latestBlogs = [];
     }
 
     return (

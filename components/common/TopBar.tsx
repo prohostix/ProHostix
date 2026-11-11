@@ -131,7 +131,7 @@ const TopBar = memo(() => {
                         {/* Clickable Title with overlap animation */}
                         <div
                             onClick={handleTitleClick}
-                            className={`font-bold tracking-tight flex items-baseline cursor-pointer ${isLight ? 'text-slate-900' : 'text-white'}`}
+                            className={`font-medium tracking-tight flex items-baseline cursor-pointer ${isLight ? 'text-slate-900' : 'text-white'}`}
                             style={{ fontSize: '24px' }}
                         >
                             <span className={isTitleAnimating ? 'animate-pro-move' : ''}>{settings?.brandWordmarkPart1 || "Pro"}</span>

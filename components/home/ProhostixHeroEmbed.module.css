@@ -1,0 +1,132 @@
+.hero {
+  position: relative;
+  height: 500vh;
+  min-height: 500vh;
+  width: 100%;
+  background: #000;
+}
+
+.hidden {
+  display: none;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+
+.layout {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.layout a {
+  pointer-events: auto;
+}
+
+.layout > :first-child {
+  max-width: none;
+  padding-bottom: 148px;
+}
+
+.eyebrow {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.eyebrow > span {
+  display: block;
+}
+
+.support {
+  max-width: 270px;
+  margin-top: 26px;
+  line-height: 1.48;
+}
+
+.headline {
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.headline > span + span {
+  margin-top: 13px;
+}
+
+.headlineNote {
+  margin-top: 22px;
+  line-height: 1.5;
+}
+
+.metricKicker {
+  line-height: 1.12;
+}
+
+.growthTitle {
+  line-height: 1.06;
+}
+
+.growthMeta {
+  line-height: 1.38;
+}
+
+.metrics,
+.growthCard {
+  bottom: 130px;
+}
+
+.giantWord {
+  bottom: 104px;
+}
+
+.services {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 102px;
+}
+
+@media (max-width: 900px) {
+  .layout > :first-child {
+    padding-bottom: 96px;
+  }
+
+  .services {
+    min-height: 90px;
+  }
+
+  .giantWord {
+    bottom: 94px;
+  }
+
+  .eyebrow {
+    gap: 6px;
+    line-height: 1;
+  }
+
+  .headline {
+    line-height: 1;
+  }
+
+  .headline > span + span {
+    margin-top: 8px;
+  }
+}
+

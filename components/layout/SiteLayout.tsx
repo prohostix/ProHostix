@@ -7,8 +7,11 @@ import { SideNavigation } from "../common/SideNavigation";
 import { ProgressLoader } from "../ui/Skeleton";
 import { useNavigationQuery, useSettingsQuery, usePrefetch, useUserProfile } from "@/hooks/usePageData";
 import { useViewport } from "@/hooks/useViewport";
+import { usePathname } from "next/navigation";
+import ProhostixHeroEmbed from "@/components/home/ProhostixHeroEmbed";
 
 const SiteLayout = ({ children }: { children: React.ReactNode }) => {
+    const pathname = usePathname();
     const { isMobile: viewportIsMobile, forceHamburger: viewportForceHamburger } = useViewport() as any;
     const [mounted, setMounted] = useState(false);
 
@@ -86,7 +89,7 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
     // but the layout itself stays responsive.
 
     return (
-        <div className="relative min-h-screen text-white overflow-x-hidden selection:bg-emerald-500/30">
+        <div className="relative min-h-screen text-white overflow-x-clip selection:bg-emerald-500/30">
 
             {/* ===== GLOBAL AI BACKGROUND ===== */}
             <div className="fixed inset-0 z-0 pointer-events-none bg-black">
@@ -105,6 +108,7 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
 
             {/* ===== PAGE CONTENT ===== */}
             <main className={`relative z-10 ${forceHamburger ? 'pl-0' : 'md:pl-24 lg:pl-0'} min-h-screen transition-all duration-300`}>
+                <ProhostixHeroEmbed active={pathname === '/'} />
                 {children}
 
                 {/* ===== FOOTER ===== */}

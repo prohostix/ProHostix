@@ -25,8 +25,11 @@ const Footer = () => {
         try {
             const res: any = await api.get('/social-links');
             setSocialLinks(res || []);
-        } catch (err) {
-            console.error('Failed to fetch social links', err);
+        } catch {
+            // The public site has static social-link fallbacks. CMS data is
+            // optional here, so an unavailable API should not trigger the
+            // Next.js development error overlay.
+            setSocialLinks([]);
         }
     };
 
