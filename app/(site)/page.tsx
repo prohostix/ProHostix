@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     if (seo) {
         return {
-            title: seo.title,
+            title: { absolute: seo.title },
             description: seo.description,
             keywords: seo.keywords,
             openGraph: {
@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     return {
-        title: 'ProHostix | Custom Software Development Company',
+        title: { absolute: 'ProHostix | Custom Software Development Company' },
         description: 'ProHostix is a custom software development company building ERP systems, SaaS platforms, web & mobile apps, and cloud architectures for growing businesses worldwide.',
         keywords: [
             'software development company',
