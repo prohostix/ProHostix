@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import "lenis/dist/lenis.css";
 import Providers from "@/components/providers/Providers";
@@ -187,6 +188,17 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-black text-white">
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-M8R8V7NK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag-manager-data-layer" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
 
         <Providers>
           <Toaster position="top-right" />
