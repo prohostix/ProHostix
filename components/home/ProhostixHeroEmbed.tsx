@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { useEffect } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import styles from './ProhostixHeroEmbed.module.css';
 import layout from './HeroOrange.module.css';
@@ -10,11 +10,21 @@ type ProhostixHeroEmbedProps = {
   active: boolean;
 };
 
+const desktopQuery = '(min-width: 901px)';
+const subscribeToViewport = (onChange: () => void) => {
+  const query = window.matchMedia(desktopQuery);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+};
+const getDesktopSnapshot = () => window.matchMedia(desktopQuery).matches;
+const getServerSnapshot = () => false;
+
 /**
  * The supplied Prohostix WebGL hero is kept mounted between route changes.
  * Its bundle owns the canvas and reads scroll progress from data-px-hero.
  */
 export default function ProhostixHeroEmbed({ active }: ProhostixHeroEmbedProps) {
+  const isDesktop = useSyncExternalStore(subscribeToViewport, getDesktopSnapshot, getServerSnapshot);
   const syncCanvas = () => {
     requestAnimationFrame(() => {
       window.dispatchEvent(new Event('resize'));
@@ -23,8 +33,8 @@ export default function ProhostixHeroEmbed({ active }: ProhostixHeroEmbedProps) 
   };
 
   useEffect(() => {
-    if (active) syncCanvas();
-  }, [active]);
+    if (active && isDesktop) syncCanvas();
+  }, [active, isDesktop]);
 
   return (
     <section
@@ -36,8 +46,8 @@ export default function ProhostixHeroEmbed({ active }: ProhostixHeroEmbedProps) 
       <div className={styles.sticky}>
         <canvas id="c" className={styles.canvas} />
         <div className={styles.layout}>
-          <div className={layout.inner}>
-            <div className={layout.leftCopy}>
+          <div className={`${layout.inner} ${styles.inner}`}>
+            <div className={`${layout.leftCopy} ${styles.leftCopy}`}>
               <p className={`${layout.eyebrow} ${styles.eyebrow}`}>
                 <span>Unlock your</span>
                 <span>Business potential</span>
@@ -77,23 +87,23 @@ export default function ProhostixHeroEmbed({ active }: ProhostixHeroEmbedProps) 
             <div className={`${layout.giantWord} ${styles.giantWord}`} aria-hidden="true">PROHOSTIX</div>
           </div>
 
-          <div className={`${layout.services} ${styles.services}`}>
+          <section className={`${layout.services} ${styles.services}`} aria-label="What we build">
             <span className={layout.serviceTitle}>What we build</span>
             <div className={layout.servicePills}>
-              <Link className={layout.pill} href="/services/custom-software">Custom software</Link>
-              <Link className={layout.pill} href="/solutions/erp-systems">ERP systems</Link>
-              <Link className={layout.pill} href="/services/saas-development">SaaS platforms</Link>
-              <Link className={layout.pill} href="/services/mobile-development">Mobile apps</Link>
-              <Link className={layout.pill} href="/services/cloud-devops">Cloud &amp; DevOps</Link>
+              <Link className={layout.pill} href="/services/custom-software"><span className={styles.serviceNumber} aria-hidden="true">01</span>Custom software</Link>
+              <Link className={layout.pill} href="/solutions/erp-systems"><span className={styles.serviceNumber} aria-hidden="true">02</span>ERP systems</Link>
+              <Link className={layout.pill} href="/services/saas-development"><span className={styles.serviceNumber} aria-hidden="true">03</span>SaaS platforms</Link>
+              <Link className={layout.pill} href="/services/mobile-development"><span className={styles.serviceNumber} aria-hidden="true">04</span>Mobile apps</Link>
+              <Link className={layout.pill} href="/services/cloud-devops"><span className={styles.serviceNumber} aria-hidden="true">05</span>Cloud &amp; DevOps</Link>
             </div>
-          </div>
+          </section>
         </div>
       </div>
-      <Script
+      {isDesktop && <Script
         src="/embeds/prohostix-hero.js?v=20261110-2"
         strategy="afterInteractive"
         onLoad={syncCanvas}
-      />
+      />}
     </section>
   );
 }
