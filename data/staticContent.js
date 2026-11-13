@@ -424,6 +424,10 @@ export const PAGE_CONTENT = {
         },
         scalable_intelligence: {
             title: "Building at Scale",
+            eyebrow: "What we deliver",
+            integration: { title: "Workflow integration", desc: "Seamlessly connect your existing tools, data sources, and internal systems." },
+            collaboration: { title: "Collaborate in real time", desc: "Work side by side with our engineers through every sprint and release." },
+            chips: ["ERP Development", "CRM Solutions", "Web Applications", "Mobile Applications", "Cloud & DevOps", "24/7 Monitoring", "Dedicated Engineers"],
             caption: "We design scalable software systems that support growth, reliability, and long-term operational success across web, mobile, and enterprise platforms.",
             capabilities: [
                 { id: "data-analytics", title: "Data Analytics & Insights", desc: "Transform operational and business data into meaningful insights that support planning, optimization, and decision-making.", img: "/architecture-viz.png", features: ["Business Reporting", "Trend Analysis", "Insight Dashboards"], stat: "Insight-Driven Decisions", targetWidth: 0.9 },
@@ -440,6 +444,7 @@ export const PAGE_CONTENT = {
             ]
         },
         cta_section: {
+            badge: "Let's build together",
             titlePart1: "READY TO BUILD THE",
             titlePart2: "NEXT",
             titlePart3: "LEVEL?",

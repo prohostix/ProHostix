@@ -3,26 +3,19 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { PAGE_CONTENT } from '../../data/staticContent';
 import styles from './PioneerWork.module.css';
 
-const sampleProjects = [
-    { id: 'crm-operations', title: 'CRM Operations Platform', image: '/images/hero/prohostix-crm-dashboard.png', tags: ['CRM', 'Analytics'] },
-    { id: 'cloud-command', title: 'Cloud Command Center', image: '/cloud-intel.png', tags: ['Cloud', 'DevOps'] },
-    { id: 'data-intelligence', title: 'Data Intelligence Suite', image: '/architecture-viz.png', tags: ['Data', 'Insights'] },
-    { id: 'mobile-banking', title: 'Mobile Banking Experience', image: '/neural-mobile.jpg', tags: ['Mobile', 'FinTech'] },
-    { id: 'logistics-control', title: 'Logistics Control Tower', image: '/project_dashboard_preview_1770603074238.jpg', tags: ['Logistics', 'ERP'] },
-    { id: 'ai-workspace', title: 'AI Knowledge Workspace', image: '/hero-ai.jpg', tags: ['AI', 'SaaS'] },
-    { id: 'commerce-engine', title: 'Unified Commerce Engine', image: '/web-arch.png', tags: ['Commerce', 'Web'] },
-    { id: 'systems-platform', title: 'Enterprise Systems Platform', image: '/tech-cube.jpg', tags: ['Platform', 'Security'] },
+const projects = [
+    { id: 'pype-crm', title: 'Pype CRM', image: '/images/hero/prohostix-crm-dashboard.png', tags: ['CRM', 'Automation'] },
+    { id: 'pype-erm', title: 'Pype ERM', image: '/software_solution_visual.jpg', tags: ['ERP', 'Education'] },
+    { id: 'collabo', title: 'Collabo', image: '/software-illustration.jpg', tags: ['Collaboration', 'Enterprise'] },
+    { id: 'skilldad-lms', title: 'SkillDad LMS', image: '/cognitive-design.png', tags: ['LMS', 'EdTech'] },
 ];
 
 export default function PioneerWork() {
     const router = useRouter();
     const sectionRef = useRef<HTMLElement>(null);
     const [activeStep, setActiveStep] = useState(0);
-    const source = PAGE_CONTENT.home.pioneer_work.projects || [];
-    const projects = [...source, ...sampleProjects].slice(0, 10);
     const maxStep = Math.max(0, projects.length - 3);
     const visibleSlots = [0, 1, 2].map((slot) => {
         const replacements = activeStep <= slot ? 0 : Math.floor((activeStep - 1 - slot) / 3) + 1;
@@ -41,7 +34,7 @@ export default function PioneerWork() {
             <motion.div className={styles.board} initial={{ opacity: 0, y: 36 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .18 }} transition={{ duration: .9, ease: [.22, 1, .36, 1] }}>
                 <div className={styles.headingRow}>
                     <div className={styles.headingWrap}><h2 id="featured-work-title">Works</h2><sup>({String(projects.length).padStart(3, '0')})</sup></div>
-                    <p>Enterprise systems designed for clarity, resilience and measurable business impact.</p>
+                    <p>Our own products, built for clarity, resilience and measurable business impact.</p>
                 </div>
 
                 <div className={styles.projects}>

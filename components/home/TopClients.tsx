@@ -1,124 +1,154 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useQuery } from '@tanstack/react-query';
-import { Loader2 } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-interface Client {
-    _id: string;
-    name: string;
-    logo: string;
-    website?: string;
-    order: number;
-    active: boolean;
-    description?: string;
+/** Client logos live in /public/clients (white PNGs on transparent background). */
+const LOGO_FILES = [
+    'adidas', 'adul', 'ai', 'al', 'albhr', 'amirtha', 'aster', 'bbk', 'coffe', 'dtale', 'etihad',
+    'fedaral', 'garmin', 'geo', 'ikea', 'joyalu', 'land mark', 'live pool', 'lulu', 'marri', 'metro',
+    'myg', 'nestle', 'oxygen', 'sedar', 'star', 'synth', 'toys', 'tri', 'university', 'v guard', 'woodl',
+].map((name) => ({
+    name,
+    src: `/clients/${encodeURIComponent(name === 'woodl' ? 'woodllogo' : `${name} logo`)}.png`,
+}));
+
+const VISIBLE = 15; // tiles on screen (5 × 3)
+const FLIP_EVERY_MS = 650;
+const FLIPS_PER_TICK = 3; // tiles that flip at the same time
+
+interface Tile {
+    faces: [number, number]; // logo index on each face
+    turns: number; // total half-turns so far; odd = back face showing
+}
+
+const rand = (n: number) => Math.floor(Math.random() * n);
+
+function LogoFace({ index, className = '' }: { index: number; className?: string }) {
+    const logo = LOGO_FILES[index];
+    return (
+        <div className={`absolute inset-0 flex items-center justify-center overflow-hidden rounded-2xl ${className}`} style={{ backfaceVisibility: 'hidden' }}>
+            <div className="relative h-full w-full">
+                <Image
+                    src={logo.src}
+                    alt={`${logo.name} logo`}
+                    fill
+                    sizes="(min-width: 1024px) 20vw, 33vw"
+                    className="scale-[1.15] object-contain opacity-90"
+                />
+            </div>
+        </div>
+    );
 }
 
 export default function TopClients() {
-    const sectionRef = useRef(null);
+    const [tiles, setTiles] = useState<Tile[]>(() =>
+        Array.from({ length: VISIBLE }, (_, i) => ({ faces: [i, i], turns: 0 }))
+    );
+    const [paused, setPaused] = useState(false);
+    const [started, setStarted] = useState(false);
+    const lastFlipped = useRef<number[]>([]);
+    const sectionRef = useRef<HTMLElement>(null);
 
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ['start end', 'center start']
-    });
+    // Start flipping only once the section is on screen
+    useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+        const io = new IntersectionObserver(([e]) => setStarted(e.isIntersecting), { threshold: 0.25 });
+        io.observe(el);
+        return () => io.disconnect();
+    }, []);
 
-    // Fetch clients
-    const { data: clients = [], isLoading } = useQuery({
-        queryKey: ['clients'],
-        queryFn: async () => {
-            const res = await fetch('/api/clients');
-            if (!res.ok) throw new Error('Failed to fetch clients');
-            const data = await res.json();
-            return data || [];
-        }
-    });
-
-    // Don't render if no clients
-    if (!isLoading && clients.length === 0) {
-        return null;
-    }
+    useEffect(() => {
+        if (!started || paused) return;
+        const id = setInterval(() => {
+            setTiles((prev) => {
+                const shown = new Set(prev.map((t) => t.faces[t.turns % 2]));
+                const hidden = LOGO_FILES.map((_, i) => i).filter((i) => !shown.has(i));
+                const count = Math.min(FLIPS_PER_TICK, hidden.length);
+                if (!count) return prev;
+                // pick distinct tiles (not flipped last tick) and distinct incoming logos
+                const slots: number[] = [];
+                while (slots.length < count) {
+                    const slot = rand(prev.length);
+                    if (!slots.includes(slot) && !lastFlipped.current.includes(slot)) slots.push(slot);
+                }
+                lastFlipped.current = slots;
+                const incoming = new Map<number, number>();
+                slots.forEach((slot) => {
+                    const pick = hidden.splice(rand(hidden.length), 1)[0];
+                    incoming.set(slot, pick);
+                });
+                return prev.map((t, i) => {
+                    if (!incoming.has(i)) return t;
+                    const nextSide = (t.turns + 1) % 2;
+                    const faces: [number, number] = [...t.faces] as [number, number];
+                    faces[nextSide] = incoming.get(i)!;
+                    return { faces, turns: t.turns + 1 };
+                });
+            });
+        }, FLIP_EVERY_MS);
+        return () => clearInterval(id);
+    }, [started, paused]);
 
     return (
-        <div
-            ref={sectionRef}
-            className="relative w-full py-20 bg-black border-t border-white/5 overflow-hidden"
-        >
-            {/* Ambient Glow */}
-            <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
+        <section ref={sectionRef} className="relative w-full overflow-hidden border-t border-white/5 bg-black px-6 py-24 md:px-12 lg:px-16">
+            {/* Colour field behind the glass */}
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-1/2 top-0 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/25 blur-[140px]" />
+                <div className="absolute -left-24 bottom-0 h-[420px] w-[420px] rounded-full bg-teal-500/20 blur-[130px]" />
+                <div className="absolute -right-24 bottom-10 h-[420px] w-[420px] rounded-full bg-emerald-300/15 blur-[130px]" />
+            </div>
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-                {/* Section Header */}
+            <div className="relative z-10 mx-auto max-w-7xl">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.7 }}
+                    className="mb-14 text-center"
                 >
-                    <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tighter bg-gradient-to-br from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent uppercase leading-tight">
-                        Trusted By Industry Leaders
-                    </h2>
-                    <p className="text-lg text-white/60 max-w-2xl mx-auto">
+                    <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-5xl">Trusted by industry leaders</h2>
+                    <p className="mx-auto max-w-2xl text-lg text-white/55">
                         Partnering with forward-thinking organizations to deliver exceptional digital solutions
                     </p>
                 </motion.div>
 
-                {/* Clients Grid */}
-                {isLoading ? (
-                    <div className="flex items-center justify-center py-12">
-                        <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
-                    </div>
-                ) : (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6"
-                    >
-                        {clients.map((client: Client, index: number) => (
-                            <motion.div
-                                key={client._id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.05 }}
-                                className="group relative"
-                            >
-                                <div className="aspect-square bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:border-emerald-500/30 hover:bg-white/10 transition-all duration-300">
-                                    {client.website ? (
-                                        <a
-                                            href={client.website}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full h-full flex items-center justify-center"
-                                        >
-                                            <img
-                                                src={client.logo}
-                                                alt={client.name}
-                                                className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-300"
-                                            />
-                                        </a>
-                                    ) : (
-                                        <img
-                                            src={client.logo}
-                                            alt={client.name}
-                                            className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-300"
-                                        />
-                                    )}
-                                </div>
-
-                                {/* Tooltip on hover */}
-                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-emerald-500 text-black text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 whitespace-nowrap">
-                                    {client.name}
-                                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-2 h-2 bg-emerald-500 rotate-45" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                )}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-5%' }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    onMouseEnter={() => setPaused(true)}
+                    onMouseLeave={() => setPaused(false)}
+                    className="grid grid-cols-3 gap-3 md:gap-4 lg:grid-cols-5"
+                    style={{ perspective: 1200 }}
+                >
+                    {tiles.map((tile, i) => (
+                        <motion.div
+                            key={i}
+                            className="relative aspect-[3/2]"
+                            animate={{ rotateX: tile.turns * 180 }}
+                            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                            style={{ transformStyle: 'preserve-3d' }}
+                        >
+                            {/* front */}
+                            <LogoFace
+                                index={tile.faces[0]}
+                                className="bg-white/[0.07] shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+                            />
+                            {/* back (pre-rotated so it reads correctly when flipped) */}
+                            <div className="absolute inset-0" style={{ transform: 'rotateX(180deg)', transformStyle: 'preserve-3d' }}>
+                                <LogoFace
+                                    index={tile.faces[1]}
+                                    className="bg-white/[0.07] shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+                                />
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
-        </div>
+        </section>
     );
 }
